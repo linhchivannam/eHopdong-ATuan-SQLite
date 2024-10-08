@@ -157,8 +157,8 @@ namespace eHopdong.USERCONTROL.DLG
         }
         private void XuatHopDong()
         {
-            object fileName = @"D:\Programs Applications\2025\PQKho-ANHDIEP\PQKho\bin\Debug\UNC\aba.docx";
-            object fileName2 = @"D:\Programs Applications\2025\PQKho-ANHDIEP\PQKho\bin\Debug\UNC\abaok.docx";
+            object fileName = @Application.StartupPath+"\\filehd.docx";
+            object fileName2 = @Application.StartupPath + "\\hdok.docx";
             object readOnly = false;
             object isVisible = true;
             object missing = System.Reflection.Missing.Value;
@@ -184,11 +184,20 @@ namespace eHopdong.USERCONTROL.DLG
 
 
             // Example of writing to bookmarks each bookmark will have exists around it to avoid null.
-            if (oWordDoc.Bookmarks.Exists("sotien"))
+            if (oWordDoc.Bookmarks.Exists("tencty"))
             {
                 // set value for bookmarks           
-                object oBookMark = "sotien";
-                oWordDoc.Bookmarks.get_Item(ref oBookMark).Range.Text = txtSotien.Text;
+                object oBookMark = "tencty";
+                oWordDoc.Bookmarks.get_Item(ref oBookMark).Range.Text = txtKHten.Text;
+
+                //oBookMark = "sotienchu";
+                //oWordDoc.Bookmarks.get_Item(ref oBookMark).Range.Text = VND.Convert(PQFunctions.ChuyenDouble(txtSotien.Text));
+            }
+            if (oWordDoc.Bookmarks.Exists("diachi"))
+            {
+                // set value for bookmarks           
+                object oBookMark = "diachi";
+                oWordDoc.Bookmarks.get_Item(ref oBookMark).Range.Text = txtKHDiachi.Text;
 
                 //oBookMark = "sotienchu";
                 //oWordDoc.Bookmarks.get_Item(ref oBookMark).Range.Text = VND.Convert(PQFunctions.ChuyenDouble(txtSotien.Text));
@@ -201,6 +210,11 @@ namespace eHopdong.USERCONTROL.DLG
             // Close the application.
             oWordApp.Application.Quit(ref missing, ref missing, ref missing);
             MessageBox.Show("Chỉnh xong rồi nhe");
+        }
+
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+            XuatHopDong();
         }
     }
 }

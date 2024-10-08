@@ -61,12 +61,21 @@
             this.btnXoa = new Krypton.Toolkit.KryptonButton();
             this.btnSua = new Krypton.Toolkit.KryptonButton();
             this.btnThem = new Krypton.Toolkit.KryptonButton();
+            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtKHChucvu = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtKHDaidien = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pValue)).BeginInit();
             this.pValue.SuspendLayout();
             this.SuspendLayout();
             // 
             // pValue
             // 
+            this.pValue.Controls.Add(this.label14);
+            this.pValue.Controls.Add(this.txtKHChucvu);
+            this.pValue.Controls.Add(this.label15);
+            this.pValue.Controls.Add(this.txtKHDaidien);
             this.pValue.Controls.Add(this.label11);
             this.pValue.Controls.Add(this.txtKHMST);
             this.pValue.Controls.Add(this.label12);
@@ -98,14 +107,14 @@
             this.pValue.Location = new System.Drawing.Point(0, 0);
             this.pValue.Name = "pValue";
             this.pValue.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.GridHeaderRowList;
-            this.pValue.Size = new System.Drawing.Size(747, 229);
+            this.pValue.Size = new System.Drawing.Size(747, 278);
             this.pValue.TabIndex = 2;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Location = new System.Drawing.Point(363, 140);
+            this.label11.Location = new System.Drawing.Point(363, 198);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(33, 13);
             this.label11.TabIndex = 282;
@@ -114,7 +123,7 @@
             // txtKHMST
             // 
             this.txtKHMST.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKHMST.Location = new System.Drawing.Point(402, 135);
+            this.txtKHMST.Location = new System.Drawing.Point(402, 193);
             this.txtKHMST.Name = "txtKHMST";
             this.txtKHMST.Size = new System.Drawing.Size(324, 23);
             this.txtKHMST.TabIndex = 281;
@@ -124,7 +133,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Location = new System.Drawing.Point(315, 198);
+            this.label12.Location = new System.Drawing.Point(315, 256);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(81, 13);
             this.label12.TabIndex = 280;
@@ -133,7 +142,7 @@
             // txtKHNH
             // 
             this.txtKHNH.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKHNH.Location = new System.Drawing.Point(402, 193);
+            this.txtKHNH.Location = new System.Drawing.Point(402, 251);
             this.txtKHNH.Name = "txtKHNH";
             this.txtKHNH.Size = new System.Drawing.Size(324, 23);
             this.txtKHNH.TabIndex = 279;
@@ -143,7 +152,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Location = new System.Drawing.Point(356, 174);
+            this.label13.Location = new System.Drawing.Point(356, 232);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(40, 13);
             this.label13.TabIndex = 278;
@@ -152,7 +161,7 @@
             // txtKHSoTK
             // 
             this.txtKHSoTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKHSoTK.Location = new System.Drawing.Point(402, 164);
+            this.txtKHSoTK.Location = new System.Drawing.Point(402, 222);
             this.txtKHSoTK.Name = "txtKHSoTK";
             this.txtKHSoTK.Size = new System.Drawing.Size(324, 23);
             this.txtKHSoTK.TabIndex = 277;
@@ -307,7 +316,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(338, 111);
+            this.label5.Location = new System.Drawing.Point(338, 169);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 159;
@@ -316,7 +325,7 @@
             // txtKhDienthoai
             // 
             this.txtKhDienthoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKhDienthoai.Location = new System.Drawing.Point(402, 106);
+            this.txtKhDienthoai.Location = new System.Drawing.Point(402, 164);
             this.txtKhDienthoai.Name = "txtKhDienthoai";
             this.txtKhDienthoai.Size = new System.Drawing.Size(324, 23);
             this.txtKhDienthoai.TabIndex = 158;
@@ -344,7 +353,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(353, 82);
+            this.label3.Location = new System.Drawing.Point(353, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 155;
@@ -353,7 +362,7 @@
             // txtKHDiachi
             // 
             this.txtKHDiachi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKHDiachi.Location = new System.Drawing.Point(402, 77);
+            this.txtKHDiachi.Location = new System.Drawing.Point(402, 135);
             this.txtKHDiachi.Name = "txtKHDiachi";
             this.txtKHDiachi.Size = new System.Drawing.Size(324, 23);
             this.txtKHDiachi.TabIndex = 154;
@@ -361,7 +370,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(349, 235);
+            this.btnHuy.Location = new System.Drawing.Point(399, 284);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(71, 25);
             this.btnHuy.TabIndex = 198;
@@ -371,7 +380,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(548, 235);
+            this.btnThoat.Location = new System.Drawing.Point(598, 284);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(90, 25);
             this.btnThoat.TabIndex = 197;
@@ -381,7 +390,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(426, 235);
+            this.btnLuu.Location = new System.Drawing.Point(476, 284);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(116, 25);
             this.btnLuu.TabIndex = 196;
@@ -391,7 +400,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(273, 235);
+            this.btnXoa.Location = new System.Drawing.Point(323, 284);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(70, 25);
             this.btnXoa.TabIndex = 195;
@@ -401,7 +410,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(204, 235);
+            this.btnSua.Location = new System.Drawing.Point(254, 284);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(63, 25);
             this.btnSua.TabIndex = 194;
@@ -411,7 +420,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(108, 235);
+            this.btnThem.Location = new System.Drawing.Point(158, 284);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(90, 25);
             this.btnThem.TabIndex = 193;
@@ -419,10 +428,59 @@
             this.btnThem.Values.Text = "Thêm mới";
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Location = new System.Drawing.Point(8, 284);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(140, 25);
+            this.kryptonButton1.TabIndex = 199;
+            this.kryptonButton1.Values.Image = global::eHopdong.Properties.Resources.close;
+            this.kryptonButton1.Values.Text = "Xuất bản Word";
+            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Location = new System.Drawing.Point(346, 111);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(50, 13);
+            this.label14.TabIndex = 286;
+            this.label14.Text = "Chức vụ:";
+            // 
+            // txtKHChucvu
+            // 
+            this.txtKHChucvu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKHChucvu.Location = new System.Drawing.Point(402, 106);
+            this.txtKHChucvu.Name = "txtKHChucvu";
+            this.txtKHChucvu.Size = new System.Drawing.Size(324, 23);
+            this.txtKHChucvu.TabIndex = 285;
+            this.txtKHChucvu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Location = new System.Drawing.Point(347, 82);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(49, 13);
+            this.label15.TabIndex = 284;
+            this.label15.Text = "Đại diện:";
+            // 
+            // txtKHDaidien
+            // 
+            this.txtKHDaidien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKHDaidien.Location = new System.Drawing.Point(402, 77);
+            this.txtKHDaidien.Name = "txtKHDaidien";
+            this.txtKHDaidien.Size = new System.Drawing.Size(324, 23);
+            this.txtKHDaidien.TabIndex = 283;
+            this.txtKHDaidien.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frm_DlgHopdong
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(747, 268);
+            this.ClientSize = new System.Drawing.Size(747, 321);
+            this.Controls.Add(this.kryptonButton1);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnLuu);
@@ -482,5 +540,10 @@
         private Krypton.Toolkit.KryptonButton btnXoa;
         private Krypton.Toolkit.KryptonButton btnSua;
         private Krypton.Toolkit.KryptonButton btnThem;
+        private Krypton.Toolkit.KryptonButton kryptonButton1;
+        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.TextBox txtKHChucvu;
+        private System.Windows.Forms.Label label15;
+        public System.Windows.Forms.TextBox txtKHDaidien;
     }
 }
