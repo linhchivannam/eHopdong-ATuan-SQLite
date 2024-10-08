@@ -38,8 +38,7 @@ namespace eHopdong
         public static string ctytknganhang = "";
         public static string ctylogo = "";
 
-        public static string connecttion = MyAccess.Config.DecryptPass(ConfigurationManager.AppSettings["PQKEY"].ToString()) + ";Connection Timeout=3600";
-
+     
 
         public static string MayinA4 = "";
         public static int iReportMarginTop =30;

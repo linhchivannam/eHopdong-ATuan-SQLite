@@ -211,7 +211,10 @@ namespace eHopdong
                 this.WindowState = FormWindowState.Maximized;
         }
 
-      
-       
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            USERCONTROL.DLG.frm_DlgUser f = new USERCONTROL.DLG.frm_DlgUser();
+            f.ShowDialog();
+        }
     }
 }

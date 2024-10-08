@@ -122,7 +122,7 @@
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(160)))), ((int)(((byte)(104)))));
             this.label18.Location = new System.Drawing.Point(561, 18);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(228, 16);
+            this.label18.Size = new System.Drawing.Size(229, 16);
             this.label18.TabIndex = 2;
             this.label18.Text = "QUẢN LÝ HỢP ĐỒNG HỘI TRƯỜNG";
             // 
@@ -135,6 +135,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
             // 
             // pHome
             // 

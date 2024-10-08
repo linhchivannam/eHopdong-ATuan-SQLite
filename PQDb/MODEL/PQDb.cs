@@ -33,7 +33,7 @@ namespace PQDb.MODEL
 
                     // Tạo bảng (nếu chưa tạo)
                     CreateTables(connection);
-                    InsertNguoidung(connection, "phuqui", "Mr Quí", "c4ca4238a0b923820dcc509a6f75849b");
+                    InsertNguoidung( "phuqui", "Mr Quí", "c4ca4238a0b923820dcc509a6f75849b");
 
 
                 }
@@ -240,7 +240,7 @@ namespace PQDb.MODEL
         }
 
         // Đọc tất cả dữ liệu từ bảng khachhang
-        public List<Khachhang> GetKhachhang(SQLiteConnection connection)
+        public List<Khachhang> GetKhachhang()
         {
             List<Khachhang> khachhangList = new List<Khachhang>();
             string select = "SELECT ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan FROM khachhang;";
@@ -265,9 +265,58 @@ namespace PQDb.MODEL
 
             return khachhangList;
         }
+        public Khachhang Get1Khachhang(string ma)
+        {
+            Khachhang a = new Khachhang();
+            string select = "SELECT ma, ten,daidien, chucvu, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan FROM khachhang where ma='"+ma+"' limit 1;";
+
+            using (var command = new SQLiteCommand(select, connection))
+            using (var reader = command.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+
+                    a.Ma = reader.GetString(0);
+                    a.Ten = reader.GetString(1);
+                    a.Daidien = reader.GetString(2);
+                    a.Chucvu = reader.GetString(3);
+                    a.Diachi = reader.GetString(4);
+                    a.Dienthoai = reader.GetString(5);
+                    a.Masothue = reader.GetString(6);
+                    a.Taikhoannganhang = reader.GetString(7);
+                    a.Sotaikhoan = reader.GetString(8);
+
+                }
+                else
+                    return null;
+            }
+
+            return a;
+        }
+        public List<Nguoidung> GetDSNguoidung()
+        {
+            string select = "SELECT ma, ten, pass FROM nguoidung where ma<>'phuqui' ";
+            List<Nguoidung> ds = new List<Nguoidung>();
+
+            using (var command = new SQLiteCommand(select, connection))
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    ds.Add(new Nguoidung
+                    {
+                        Ma = reader.GetString(0),
+                        Ten = reader.GetString(1),
+                        Pass = reader.GetString(2)
+                    });
+                }
+               
+            }
+            return ds;
+        }
         public  Nguoidung GetNguoidung(string ma)
         {
-            string select = "SELECT ma, ten, pass FROM nguoidung LIMIT 1";
+            string select = "SELECT ma, ten, pass FROM nguoidung where ma='"+ma+"' LIMIT 1";
             Nguoidung a = new Nguoidung();
 
             using (var command = new SQLiteCommand(select, connection))
@@ -286,7 +335,7 @@ namespace PQDb.MODEL
             }
             return a;                
         }
-        public void InsertNguoidung(SQLiteConnection connection, string ma, string ten, string pass)
+        public void InsertNguoidung( string ma, string ten, string pass)
         {
             var q = GetNguoidung(ma);
             if (q == null)
@@ -393,7 +442,15 @@ namespace PQDb.MODEL
                 command.ExecuteNonQuery();
             }
         }
-
+        public void DeleteNguoidung(string id)
+        {
+            string delete = "DELETE FROM nguoidung WHERE ma = @id;";
+            using (var command = new SQLiteCommand(delete, connection))
+            {
+                command.Parameters.AddWithValue("@ma", id);
+                command.ExecuteNonQuery();
+            }
+        }
         public void DeleteHopdong( long id)
         {
             string delete = "DELETE FROM hopdong WHERE id = @id;";
@@ -437,7 +494,7 @@ namespace PQDb.MODEL
             }
         }
 
-        public void DeleteKhachhang(SQLiteConnection connection, string ma)
+        public void DeleteKhachhang( string ma)
         {
             string delete = "DELETE FROM khachhang WHERE ma = @ma;";
             using (var command = new SQLiteCommand(delete, connection))

@@ -28,6 +28,10 @@
         private void InitializeComponent()
         {
             this.pValue = new Krypton.Toolkit.KryptonPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtKHChucvu = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtKHDaidien = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtKHMST = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -62,10 +66,6 @@
             this.btnSua = new Krypton.Toolkit.KryptonButton();
             this.btnThem = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtKHChucvu = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtKHDaidien = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pValue)).BeginInit();
             this.pValue.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +109,44 @@
             this.pValue.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.GridHeaderRowList;
             this.pValue.Size = new System.Drawing.Size(747, 278);
             this.pValue.TabIndex = 2;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Location = new System.Drawing.Point(346, 111);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(50, 13);
+            this.label14.TabIndex = 286;
+            this.label14.Text = "Chức vụ:";
+            // 
+            // txtKHChucvu
+            // 
+            this.txtKHChucvu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKHChucvu.Location = new System.Drawing.Point(402, 106);
+            this.txtKHChucvu.Name = "txtKHChucvu";
+            this.txtKHChucvu.Size = new System.Drawing.Size(324, 23);
+            this.txtKHChucvu.TabIndex = 285;
+            this.txtKHChucvu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Location = new System.Drawing.Point(347, 82);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(49, 13);
+            this.label15.TabIndex = 284;
+            this.label15.Text = "Đại diện:";
+            // 
+            // txtKHDaidien
+            // 
+            this.txtKHDaidien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKHDaidien.Location = new System.Drawing.Point(402, 77);
+            this.txtKHDaidien.Name = "txtKHDaidien";
+            this.txtKHDaidien.Size = new System.Drawing.Size(324, 23);
+            this.txtKHDaidien.TabIndex = 283;
+            this.txtKHDaidien.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
@@ -204,6 +242,7 @@
             this.txtKHma.Size = new System.Drawing.Size(324, 23);
             this.txtKHma.TabIndex = 273;
             this.txtKHma.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtKHma.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKHma_KeyDown);
             // 
             // label7
             // 
@@ -437,44 +476,6 @@
             this.kryptonButton1.Values.Image = global::eHopdong.Properties.Resources.close;
             this.kryptonButton1.Values.Text = "Xuất bản Word";
             this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Location = new System.Drawing.Point(346, 111);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(50, 13);
-            this.label14.TabIndex = 286;
-            this.label14.Text = "Chức vụ:";
-            // 
-            // txtKHChucvu
-            // 
-            this.txtKHChucvu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKHChucvu.Location = new System.Drawing.Point(402, 106);
-            this.txtKHChucvu.Name = "txtKHChucvu";
-            this.txtKHChucvu.Size = new System.Drawing.Size(324, 23);
-            this.txtKHChucvu.TabIndex = 285;
-            this.txtKHChucvu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Location = new System.Drawing.Point(347, 82);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(49, 13);
-            this.label15.TabIndex = 284;
-            this.label15.Text = "Đại diện:";
-            // 
-            // txtKHDaidien
-            // 
-            this.txtKHDaidien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKHDaidien.Location = new System.Drawing.Point(402, 77);
-            this.txtKHDaidien.Name = "txtKHDaidien";
-            this.txtKHDaidien.Size = new System.Drawing.Size(324, 23);
-            this.txtKHDaidien.TabIndex = 283;
-            this.txtKHDaidien.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frm_DlgHopdong
             // 

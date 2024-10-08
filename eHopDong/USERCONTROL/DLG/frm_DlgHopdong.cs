@@ -215,5 +215,22 @@ namespace eHopdong.USERCONTROL.DLG
         {
             XuatHopDong();
         }
+
+        private void txtKHma_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (txtKHma.Text.Trim().Length == 0)
+                {
+                    DLG.frm_DlgKhachhang f = new frm_DlgKhachhang();
+                    PQ.ClickOK = false;
+                    f.ShowDialog();
+                    if (PQ.ClickOK)
+                    {
+                        var q = db.Get1Khachhang();
+                    }
+                }
+            }
+        }
     }
 }

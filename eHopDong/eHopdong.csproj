@@ -124,6 +124,18 @@
     <Compile Include="USERCONTROL\DLG\frm_DlgHopdong.Designer.cs">
       <DependentUpon>frm_DlgHopdong.cs</DependentUpon>
     </Compile>
+    <Compile Include="USERCONTROL\DLG\frm_DlgKhachhang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="USERCONTROL\DLG\frm_DlgKhachhang.Designer.cs">
+      <DependentUpon>frm_DlgKhachhang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="USERCONTROL\DLG\frm_DlgUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="USERCONTROL\DLG\frm_DlgUser.Designer.cs">
+      <DependentUpon>frm_DlgUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="USERCONTROL\uChangePass.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -161,6 +173,12 @@
     <EmbeddedResource Include="USERCONTROL\DLG\frm_DlgHopdong.resx">
       <DependentUpon>frm_DlgHopdong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="USERCONTROL\DLG\frm_DlgKhachhang.resx">
+      <DependentUpon>frm_DlgKhachhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="USERCONTROL\DLG\frm_DlgUser.resx">
+      <DependentUpon>frm_DlgUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="USERCONTROL\uChangePass.resx">
       <DependentUpon>uChangePass.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +204,7 @@
     <None Include="Properties\DataSources\eMekong.MODEL.BCDoanhthuloinhuan.datasource" />
     <None Include="Properties\DataSources\eMekong.MODEL.Chamsoc.datasource" />
     <None Include="Properties\DataSources\PQDb.MODEL.Hopdong.datasource" />
+    <None Include="Properties\DataSources\PQDb.MODEL.Nguoidung.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
