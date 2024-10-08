@@ -64,7 +64,7 @@ namespace eHopdong
             if (!pHome.Controls.Contains(USERCONTROL.uLogin.Instance))
             {
                 pHome.Controls.Add(USERCONTROL.uLogin.Instance);
-                USERCONTROL.uLogin.Instance.fhome = this;
+               // USERCONTROL.uLogin.Instance.fhome = this;
                 USERCONTROL.uLogin.Instance.Dock = DockStyle.Fill;
                 USERCONTROL.uLogin.Instance.BringToFront();
                 USERCONTROL.uLogin.Instance.txtUser.Focus();
@@ -194,13 +194,13 @@ namespace eHopdong
         private void pqHome_Click(object sender, EventArgs e)
         {
             pHome.Controls.Clear();
-            if (!pHome.Controls.Contains(KINHDOANH.uTongquan.Instance))
-            {
-                pHome.Controls.Add(KINHDOANH.uTongquan.Instance);
-                KINHDOANH.uTongquan.Instance.Setup();
-                KINHDOANH.uTongquan.Instance.Dock = DockStyle.Fill;
-                KINHDOANH.uTongquan.Instance.BringToFront();
-            }
+            //if (!pHome.Controls.Contains(KINHDOANH.uTongquan.Instance))
+            //{
+            //    pHome.Controls.Add(KINHDOANH.uTongquan.Instance);
+            //    KINHDOANH.uTongquan.Instance.Setup();
+            //    KINHDOANH.uTongquan.Instance.Dock = DockStyle.Fill;
+            //    KINHDOANH.uTongquan.Instance.BringToFront();
+            //}
         }
 
         private void pqQuantri_Click(object sender, EventArgs e)
@@ -209,7 +209,7 @@ namespace eHopdong
             if (!pHome.Controls.Contains(DANHMUC.uQuantri.Instance))
             {
                 pHome.Controls.Add(DANHMUC.uQuantri.Instance);
-                DANHMUC.uQuantri.Instance.myhome = this;
+                //DANHMUC.uQuantri.Instance.myhome = this;
                 DANHMUC.uQuantri.Instance.Dock = DockStyle.Fill;
                 DANHMUC.uQuantri.Instance.BringToFront();
             }
@@ -228,7 +228,7 @@ namespace eHopdong
             if (!pHome.Controls.Contains(USERCONTROL.uLogin.Instance))
             {
                 pHome.Controls.Add(USERCONTROL.uLogin.Instance);
-                USERCONTROL.uLogin.Instance.fhome = this;
+             //   USERCONTROL.uLogin.Instance.fhome = this;
                 USERCONTROL.uLogin.Instance.Dock = DockStyle.Fill;
                 USERCONTROL.uLogin.Instance.BringToFront();
                 USERCONTROL.uLogin.Instance.txtUser.Focus();

@@ -126,7 +126,7 @@
             // logo
             // 
             this.logo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.logo.Image = global::eHopdong.Properties.Resources.mekong_login;
+            this.logo.Image = global::eHopdong.Properties.Resources.Logo_Mekong;
             this.logo.Location = new System.Drawing.Point(238, 127);
             this.logo.Name = "logo";
             this.logo.Size = new System.Drawing.Size(238, 107);

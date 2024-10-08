@@ -13,7 +13,7 @@ namespace eHopdong.USERCONTROL
 {
     public partial class uLogin : UserControl
     {
-       public Home fhome;
+       public HomePQ fhome;
         private static uLogin _instance;
         public static uLogin Instance
         {

@@ -28,7 +28,7 @@ namespace eHopdong.DANHMUC
             InitializeComponent();
         }
         LINQ.DbDataContext db;
-        public Home myhome;
+        public HomePQ myhome;
 
         private void kryptonButton2_Click(object sender, EventArgs e)
         {

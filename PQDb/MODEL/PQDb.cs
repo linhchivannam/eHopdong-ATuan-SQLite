@@ -7,61 +7,75 @@ using System.Data.SQLite;
 
 namespace PQDb.MODEL
 {
-     class PQDb
+    public class PQDb
     {
+        string dbPath = "pq.db";
+        SQLiteConnection connection;
+
+      public  PQDb() {
+            CheckConect();
+        }
         private void CheckConect()
-        {
-            string dbPath = "pq.db";
+        {           
 
             // Kiểm tra xem cơ sở dữ liệu đã tồn tại chưa
             if (!File.Exists(dbPath))
             {
                 Console.WriteLine("Cơ sở dữ liệu không tồn tại, đang tạo mới...");
                 CreateDatabase(dbPath);
+
             }
 
-            using (var connection = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
+            using ( connection = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
             {
                 connection.Open();
 
                 // Tạo bảng (nếu chưa tạo)
                 CreateTables(connection);
+                InsertNguoidung(connection, "phuqui", "Mr Quí", "12");
 
-                // Thao tác với bảng dulieu
-                InsertDulieu(connection, 1, "Nội dung 1");
-                InsertDulieu(connection, 2, "Nội dung 2");
+                //// Thao tác với bảng dulieu
+                //InsertDulieu(connection, 1, "Nội dung 1");
+                //InsertDulieu(connection, 2, "Nội dung 2");
 
-                // Đọc và tìm kiếm
-                List<Dulieu> dulieuList = GetDulieu(connection);
-                Console.WriteLine("Danh sách dữ liệu trong bảng dulieu:");
-                foreach (var dulieu in dulieuList)
-                {
-                    Console.WriteLine($"Mã: {dulieu.Ma}, Nội dung: {dulieu.Noidung}");
-                }
+                //// Đọc và tìm kiếm
+                //List<Dulieu> dulieuList = GetDulieu(connection);
+                //Console.WriteLine("Danh sách dữ liệu trong bảng dulieu:");
+                //foreach (var dulieu in dulieuList)
+                //{
+                //    Console.WriteLine($"Mã: {dulieu.Ma}, Nội dung: {dulieu.Noidung}");
+                //}
 
-                var foundDulieu = SearchDulieu(connection, "Nội dung 1");
-                Console.WriteLine("\nKết quả tìm kiếm trong bảng dulieu:");
-                foreach (var dulieu in foundDulieu)
-                {
-                    Console.WriteLine($"Mã: {dulieu.Ma}, Nội dung: {dulieu.Noidung}");
-                }
+                //var foundDulieu = SearchDulieu(connection, "Nội dung 1");
+                //Console.WriteLine("\nKết quả tìm kiếm trong bảng dulieu:");
+                //foreach (var dulieu in foundDulieu)
+                //{
+                //    Console.WriteLine($"Mã: {dulieu.Ma}, Nội dung: {dulieu.Noidung}");
+                //}
 
-                // Đọc và tìm kiếm trong bảng hopdong
-                List<Hopdong> hopdongList = GetHopdong(connection);
-                Console.WriteLine("\nDanh sách hợp đồng:");
-                foreach (var hopdong in hopdongList)
-                {
-                    Console.WriteLine($"ID: {hopdong.Id}, Số hợp đồng: {hopdong.Sohopdong}, Ngày: {hopdong.Ngay}, Nội dung: {hopdong.Noidung}");
-                }
+                //// Đọc và tìm kiếm trong bảng hopdong
+                //List<Hopdong> hopdongList = GetHopdong(connection);
+                //Console.WriteLine("\nDanh sách hợp đồng:");
+                //foreach (var hopdong in hopdongList)
+                //{
+                //    Console.WriteLine($"ID: {hopdong.Id}, Số hợp đồng: {hopdong.Sohopdong}, Ngày: {hopdong.Ngay}, Nội dung: {hopdong.Noidung}");
+                //}
 
-                // Đọc và tìm kiếm trong bảng khachhang
-                List<Khachhang> khachhangList = GetKhachhang(connection);
-                Console.WriteLine("\nDanh sách khách hàng:");
-                foreach (var khachhang in khachhangList)
-                {
-                    Console.WriteLine($"Mã: {khachhang.Ma}, Tên: {khachhang.Ten}, Địa chỉ: {khachhang.Diachi}");
-                }
+                //// Đọc và tìm kiếm trong bảng khachhang
+                //List<Khachhang> khachhangList = GetKhachhang(connection);
+                //Console.WriteLine("\nDanh sách khách hàng:");
+                //foreach (var khachhang in khachhangList)
+                //{
+                //    Console.WriteLine($"Mã: {khachhang.Ma}, Tên: {khachhang.Ten}, Địa chỉ: {khachhang.Diachi}");
+                //}
             }
+        }
+         SQLiteConnection Kettnoi()
+        {
+            var connection = new SQLiteConnection($"Data Source={dbPath};Version=3;");
+            
+                connection.Open();
+            return connection;
         }
         static void CreateDatabase(string dbPath)
         {
@@ -82,7 +96,17 @@ namespace PQDb.MODEL
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             sohopdong TEXT(20),
             ngay DATETIME,
-            noidung TEXT
+            noidung TEXT,
+            batdau DATETIME,
+            ketthuc DATETIME,
+            ghichu TEXT,
+            ma TEXT ,
+            ten TEXT,
+            diachi TEXT,
+            dienthoai TEXT,
+            masothue TEXT,
+            taikhoannganhang TEXT,
+            sotaikhoan TEXT
         );";
 
             string createKhachhangTable = @"
@@ -94,6 +118,13 @@ namespace PQDb.MODEL
             masothue TEXT,
             taikhoannganhang TEXT,
             sotaikhoan TEXT
+        );";
+
+            string creatNguoidungTable = @"
+        CREATE TABLE IF NOT EXISTS nguoidung (
+            ma TEXT PRIMARY KEY,
+            ten TEXT,
+            pass TEXT
         );";
 
             using (var command = new SQLiteCommand(createDulieuTable, connection))
@@ -110,7 +141,12 @@ namespace PQDb.MODEL
             {
                 command.ExecuteNonQuery();
             }
+            using (var command = new SQLiteCommand(creatNguoidungTable, connection))
+            {
+                command.ExecuteNonQuery();
+            }
         }
+        
         static List<Dulieu> GetDulieu(SQLiteConnection connection)
         {
             List<Dulieu> dulieuList = new List<Dulieu>();
@@ -158,10 +194,10 @@ namespace PQDb.MODEL
         }
 
         // Đọc tất cả dữ liệu từ bảng hopdong
-        static List<Hopdong> GetHopdong(SQLiteConnection connection)
+        static List<Hopdong> GetHopdong(SQLiteConnection connection, string where)
         {
             List<Hopdong> hopdongList = new List<Hopdong>();
-            string select = "SELECT id, sohopdong, ngay, noidung FROM hopdong;";
+            string select = "SELECT id, sohopdong, ngay, noidung, batdau, ketthuc,ghichu ,ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan FROM hopdong "+where+";";
 
             using (var command = new SQLiteCommand(select, connection))
             using (var reader = command.ExecuteReader())
@@ -173,7 +209,17 @@ namespace PQDb.MODEL
                         Id = reader.GetInt32(0),
                         Sohopdong = reader.GetString(1),
                         Ngay = reader.GetDateTime(2),
-                        Noidung = reader.GetString(3)
+                        Noidung = reader.GetString(3),
+                        Batdau = reader.GetDateTime(4),
+                        Ketthuc = reader.GetDateTime(5),
+                        Ghichu = reader.GetString(6),
+                        Ma = reader.GetString(7),
+                        Ten = reader.GetString(8),
+                        Diachi = reader.GetString(9),
+                        Dienthoai = reader.GetString(10),
+                        Masothue = reader.GetString(11),
+                        Taikhoannganhang = reader.GetString(12),
+                        Sotaikhoan = reader.GetString(13)
                     });
                 }
             }
@@ -206,6 +252,17 @@ namespace PQDb.MODEL
             }
 
             return khachhangList;
+        }
+        static void InsertNguoidung(SQLiteConnection connection, string ma, string ten, string pass)
+        {
+            string insert = "INSERT INTO nguoidung(ma, ten,pass) VALUES (@ma, @ten, @pass);";
+            using (var command = new SQLiteCommand(insert, connection))
+            {
+                command.Parameters.AddWithValue("@ma", ma);
+                command.Parameters.AddWithValue("@ten", ten);
+                command.Parameters.AddWithValue("@pass", pass);
+                command.ExecuteNonQuery();
+            }
         }
         static void InsertDulieu(SQLiteConnection connection, int ma, string noidung)
         {
@@ -240,14 +297,27 @@ namespace PQDb.MODEL
         }
 
         // Các thao tác với bảng hopdong
-        static void InsertHopdong(SQLiteConnection connection, string sohopdong, DateTime ngay, string noidung)
+        static void InsertHopdong(SQLiteConnection connection, string sohopdong, DateTime ngay, string noidung,DateTime batdau, DateTime ketthuc, string ghichu, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
         {
-            string insert = "INSERT INTO hopdong (sohopdong, ngay, noidung) VALUES (@sohopdong, @ngay, @noidung);";
+            string insert = "INSERT INTO hopdong (sohopdong, ngay, noidung, batdau, ketthuc, ghichu, ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan) VALUES (@sohopdong, @ngay, @noidung, @batdau, @ketthuc, @ghichu, @ma, @ten, @diachi, @dienthoai, @masothue, @taikhoannganhang, @sotaikhoan);";
             using (var command = new SQLiteCommand(insert, connection))
             {
                 command.Parameters.AddWithValue("@sohopdong", sohopdong);
                 command.Parameters.AddWithValue("@ngay", ngay);
                 command.Parameters.AddWithValue("@noidung", noidung);
+
+                command.Parameters.AddWithValue("@batdau", batdau);
+                command.Parameters.AddWithValue("@ketthuc", ketthuc);
+                command.Parameters.AddWithValue("@ghichu", ghichu);
+
+                command.Parameters.AddWithValue("@ma", ma);
+                command.Parameters.AddWithValue("@ten", ten);
+                command.Parameters.AddWithValue("@diachi", diachi);
+                command.Parameters.AddWithValue("@dienthoai", dienthoai);
+                command.Parameters.AddWithValue("@masothue", masothue);
+                command.Parameters.AddWithValue("@taikhoannganhang", taikhoannganhang);
+                command.Parameters.AddWithValue("@sotaikhoan", sotaikhoan);
+
                 command.ExecuteNonQuery();
             }
         }
