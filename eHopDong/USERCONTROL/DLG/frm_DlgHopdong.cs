@@ -115,14 +115,13 @@ namespace eHopdong.USERCONTROL.DLG
                 if (sua)
                 {
 
-                    db.UpdateHopdong(myid,txtHDso.Text,dtNgay.Value.Date, txtNoidung.Text,dtbatdau.Value.Date, dtKetthuc.Value.Date, Functions.ChuyenDouble(txtSotien.Text),txtGhichu.Text,txtKHma.Text,txtKHten.Text,txtKHDiachi.Text, txtKhDienthoai.Text,txtKHMST.Text,txtKHNH.Text,txtKHSoTK.Text);
+                    db.UpdateHopdong(myid,txtHDso.Text,dtNgay.Value.Date, txtNoidung.Text,dtbatdau.Value.Date, dtKetthuc.Value.Date, Functions.ChuyenDouble(txtSotien.Text),txtGhichu.Text,txtKHma.Text,txtKHten.Text,txtKHDaidien.Text, txtKHChucvu.Text, txtKHDiachi.Text, txtKhDienthoai.Text,txtKHMST.Text,txtKHNH.Text,txtKHSoTK.Text);
                    
                 }
                 else
                 {
 
-                    db.InsertHopdong( txtHDso.Text, dtNgay.Value.Date, txtNoidung.Text, dtbatdau.Value.Date, dtKetthuc.Value.Date, Functions.ChuyenDouble(txtSotien.Text), txtGhichu.Text, txtKHma.Text, txtKHten.Text, txtKHDiachi.Text, txtKhDienthoai.Text, txtKHMST.Text, txtKHNH.Text, txtKHSoTK.Text);
-
+                    db.InsertHopdong( txtHDso.Text, dtNgay.Value.Date, txtNoidung.Text, dtbatdau.Value.Date, dtKetthuc.Value.Date, Functions.ChuyenDouble(txtSotien.Text), txtGhichu.Text, txtKHma.Text, txtKHten.Text, txtKHDaidien.Text, txtKHChucvu.Text, txtKHDiachi.Text, txtKhDienthoai.Text, txtKHMST.Text, txtKHNH.Text, txtKHSoTK.Text);
                 }
 
                 if (fl)

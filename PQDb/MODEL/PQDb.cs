@@ -74,6 +74,8 @@ namespace PQDb.MODEL
             ghichu TEXT,
             ma TEXT ,
             ten TEXT,
+            daidien TEXT ,
+            chucvu TEXT,
             diachi TEXT,
             dienthoai TEXT,
             masothue TEXT,
@@ -85,6 +87,8 @@ namespace PQDb.MODEL
         CREATE TABLE IF NOT EXISTS khachhang (
             ma TEXT PRIMARY KEY,
             ten TEXT,
+            daidien TEXT ,
+            chucvu TEXT,
             diachi TEXT,
             dienthoai TEXT,
             masothue TEXT,
@@ -331,9 +335,9 @@ namespace PQDb.MODEL
         }
 
         // Các thao tác với bảng hopdong
-        public void InsertHopdong( string sohopdong, DateTime ngay, string noidung,DateTime batdau, DateTime ketthuc,double sotien, string ghichu, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
+        public void InsertHopdong( string sohopdong, DateTime ngay, string noidung,DateTime batdau, DateTime ketthuc,double sotien, string ghichu, string ma, string ten,string daidien, string chucvu , string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
         {
-            string insert = "INSERT INTO hopdong (sohopdong, ngay, noidung, batdau, ketthuc,sotien, ghichu, ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan) VALUES (@sohopdong, @ngay, @noidung, @batdau, @ketthuc,@sotien, @ghichu, @ma, @ten, @diachi, @dienthoai, @masothue, @taikhoannganhang, @sotaikhoan);";
+            string insert = "INSERT INTO hopdong (sohopdong, ngay, noidung, batdau, ketthuc,sotien, ghichu, ma, ten,daidien, chucvu, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan) VALUES (@sohopdong, @ngay, @noidung, @batdau, @ketthuc,@sotien, @ghichu, @ma, @ten,@daidien, @chucvu, @diachi, @dienthoai, @masothue, @taikhoannganhang, @sotaikhoan);";
             using (var command = new SQLiteCommand(insert, connection))
             {
                 command.Parameters.AddWithValue("@sohopdong", sohopdong);
@@ -347,6 +351,8 @@ namespace PQDb.MODEL
 
                 command.Parameters.AddWithValue("@ma", ma);
                 command.Parameters.AddWithValue("@ten", ten);
+                command.Parameters.AddWithValue("@daidien", daidien);
+                command.Parameters.AddWithValue("@chucvu", chucvu);
                 command.Parameters.AddWithValue("@diachi", diachi);
                 command.Parameters.AddWithValue("@dienthoai", dienthoai);
                 command.Parameters.AddWithValue("@masothue", masothue);
@@ -357,11 +363,11 @@ namespace PQDb.MODEL
             }
         }
 
-        public void UpdateHopdong( long id, string sohopdong, DateTime ngay, string noidung, DateTime batdau, DateTime ketthuc,double sotien, string ghichu, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
+        public void UpdateHopdong( long id, string sohopdong, DateTime ngay, string noidung, DateTime batdau, DateTime ketthuc,double sotien, string ghichu, string ma, string ten,string daidien, string chucvu ,string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
         {
             string update = "UPDATE hopdong SET sohopdong = @sohopdong, ngay = @ngay, noidung = @noidung," +
                 "batdau =@batdau, ketthuc=@ketthuc,sotien=@sotien, ghichu=@ghichu, " +
-                "ten = @ten, diachi = @diachi, dienthoai = @dienthoai, masothue = @masothue, taikhoannganhang = @taikhoannganhang, sotaikhoan = @sotaikhoan" +
+                "ten = @ten,daidien=@daidien, chucvu=@chucvu, diachi = @diachi, dienthoai = @dienthoai, masothue = @masothue, taikhoannganhang = @taikhoannganhang, sotaikhoan = @sotaikhoan" +
                 " WHERE id = @id;";
             using (var command = new SQLiteCommand(update, connection))
             {
@@ -377,6 +383,8 @@ namespace PQDb.MODEL
 
                 command.Parameters.AddWithValue("@ma", ma);
                 command.Parameters.AddWithValue("@ten", ten);
+                command.Parameters.AddWithValue("@daidien", daidien);
+                command.Parameters.AddWithValue("@chucvu", chucvu);
                 command.Parameters.AddWithValue("@diachi", diachi);
                 command.Parameters.AddWithValue("@dienthoai", dienthoai);
                 command.Parameters.AddWithValue("@masothue", masothue);
@@ -464,6 +472,8 @@ namespace PQDb.MODEL
 
         public string Ma { get; set; }
         public string Ten { get; set; }
+        public string Daidien { get; set; }
+        public string Chucvu { get; set; }
         public string Diachi { get; set; }
         public string Dienthoai { get; set; }
         public string Masothue { get; set; }
@@ -475,6 +485,8 @@ namespace PQDb.MODEL
     {
         public string Ma { get; set; }
         public string Ten { get; set; }
+        public string Daidien { get; set; }
+        public string Chucvu { get; set; }
         public string Diachi { get; set; }
         public string Dienthoai { get; set; }
         public string Masothue { get; set; }
