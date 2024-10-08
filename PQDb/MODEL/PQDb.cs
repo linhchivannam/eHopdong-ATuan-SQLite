@@ -9,11 +9,14 @@ namespace PQDb.MODEL
 {
     public class PQDb
     {
-        string dbPath = "pq.db";
+        string dbPath = "PQdb.db";
         SQLiteConnection connection;
 
       public  PQDb() {
             CheckConect();
+            connection = new SQLiteConnection($"Data Source={dbPath};Version=3;");
+            connection.Open();
+           // CheckConect();
         }
         private void CheckConect()
         {           
@@ -24,51 +27,19 @@ namespace PQDb.MODEL
                 Console.WriteLine("Cơ sở dữ liệu không tồn tại, đang tạo mới...");
                 CreateDatabase(dbPath);
 
+                using (connection = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
+                {
+                    connection.Open();
+
+                    // Tạo bảng (nếu chưa tạo)
+                    CreateTables(connection);
+                    InsertNguoidung(connection, "phuqui", "Mr Quí", "c4ca4238a0b923820dcc509a6f75849b");
+
+
+                }
             }
 
-            using ( connection = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
-            {
-                connection.Open();
-
-                // Tạo bảng (nếu chưa tạo)
-                CreateTables(connection);
-                InsertNguoidung(connection, "phuqui", "Mr Quí", "12");
-
-                //// Thao tác với bảng dulieu
-                //InsertDulieu(connection, 1, "Nội dung 1");
-                //InsertDulieu(connection, 2, "Nội dung 2");
-
-                //// Đọc và tìm kiếm
-                //List<Dulieu> dulieuList = GetDulieu(connection);
-                //Console.WriteLine("Danh sách dữ liệu trong bảng dulieu:");
-                //foreach (var dulieu in dulieuList)
-                //{
-                //    Console.WriteLine($"Mã: {dulieu.Ma}, Nội dung: {dulieu.Noidung}");
-                //}
-
-                //var foundDulieu = SearchDulieu(connection, "Nội dung 1");
-                //Console.WriteLine("\nKết quả tìm kiếm trong bảng dulieu:");
-                //foreach (var dulieu in foundDulieu)
-                //{
-                //    Console.WriteLine($"Mã: {dulieu.Ma}, Nội dung: {dulieu.Noidung}");
-                //}
-
-                //// Đọc và tìm kiếm trong bảng hopdong
-                //List<Hopdong> hopdongList = GetHopdong(connection);
-                //Console.WriteLine("\nDanh sách hợp đồng:");
-                //foreach (var hopdong in hopdongList)
-                //{
-                //    Console.WriteLine($"ID: {hopdong.Id}, Số hợp đồng: {hopdong.Sohopdong}, Ngày: {hopdong.Ngay}, Nội dung: {hopdong.Noidung}");
-                //}
-
-                //// Đọc và tìm kiếm trong bảng khachhang
-                //List<Khachhang> khachhangList = GetKhachhang(connection);
-                //Console.WriteLine("\nDanh sách khách hàng:");
-                //foreach (var khachhang in khachhangList)
-                //{
-                //    Console.WriteLine($"Mã: {khachhang.Ma}, Tên: {khachhang.Ten}, Địa chỉ: {khachhang.Diachi}");
-                //}
-            }
+            
         }
          SQLiteConnection Kettnoi()
         {
@@ -99,6 +70,7 @@ namespace PQDb.MODEL
             noidung TEXT,
             batdau DATETIME,
             ketthuc DATETIME,
+            sotien  REAL,
             ghichu TEXT,
             ma TEXT ,
             ten TEXT,
@@ -194,10 +166,45 @@ namespace PQDb.MODEL
         }
 
         // Đọc tất cả dữ liệu từ bảng hopdong
-        static List<Hopdong> GetHopdong(SQLiteConnection connection, string where)
+        public Hopdong Get1Hopdong(string where)
+        {
+            Hopdong a = new Hopdong();
+            List<Hopdong> hopdongList = new List<Hopdong>();
+            string select = "SELECT id, sohopdong, ngay, noidung, batdau, ketthuc,ghichu ,ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan,sotien FROM hopdong where id='" + where + "' limit 1;";
+
+            using (var command = new SQLiteCommand(select, connection))
+            using (var reader = command.ExecuteReader())
+            {
+               if(reader.Read())
+                {
+
+                    a.Id = reader.GetInt32(0);
+                    a.Sohopdong = reader.GetString(1);
+                    a.Ngay = reader.GetDateTime(2);
+                    a.Noidung = reader.GetString(3);
+                    a.Batdau = reader.GetDateTime(4);
+                    a.Ketthuc = reader.GetDateTime(5);
+                    a.Ghichu = reader.GetString(6);
+                    a.Ma = reader.GetString(7);
+                    a.Ten = reader.GetString(8);
+                    a.Diachi = reader.GetString(9);
+                    a.Dienthoai = reader.GetString(10);
+                    a.Masothue = reader.GetString(11);
+                    a.Taikhoannganhang = reader.GetString(12);
+                    a.Sotaikhoan = reader.GetString(13);
+                    a.Sotien = reader.GetDouble(14);
+                    return a;
+                }
+              //  return null;
+            }
+
+            return null;
+        }
+
+        public List<Hopdong> GetHopdong( string where)
         {
             List<Hopdong> hopdongList = new List<Hopdong>();
-            string select = "SELECT id, sohopdong, ngay, noidung, batdau, ketthuc,ghichu ,ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan FROM hopdong "+where+";";
+            string select = "SELECT id, sohopdong, ngay, noidung, batdau, ketthuc,ghichu ,ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan,sotien FROM hopdong "+where+";";
 
             using (var command = new SQLiteCommand(select, connection))
             using (var reader = command.ExecuteReader())
@@ -219,7 +226,8 @@ namespace PQDb.MODEL
                         Dienthoai = reader.GetString(10),
                         Masothue = reader.GetString(11),
                         Taikhoannganhang = reader.GetString(12),
-                        Sotaikhoan = reader.GetString(13)
+                        Sotaikhoan = reader.GetString(13),
+                        Sotien = reader.GetDouble(14)
                     });
                 }
             }
@@ -228,7 +236,7 @@ namespace PQDb.MODEL
         }
 
         // Đọc tất cả dữ liệu từ bảng khachhang
-        static List<Khachhang> GetKhachhang(SQLiteConnection connection)
+        public List<Khachhang> GetKhachhang(SQLiteConnection connection)
         {
             List<Khachhang> khachhangList = new List<Khachhang>();
             string select = "SELECT ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan FROM khachhang;";
@@ -253,15 +261,40 @@ namespace PQDb.MODEL
 
             return khachhangList;
         }
-        static void InsertNguoidung(SQLiteConnection connection, string ma, string ten, string pass)
+        public  Nguoidung GetNguoidung(string ma)
         {
-            string insert = "INSERT INTO nguoidung(ma, ten,pass) VALUES (@ma, @ten, @pass);";
-            using (var command = new SQLiteCommand(insert, connection))
+            string select = "SELECT ma, ten, pass FROM nguoidung LIMIT 1";
+            Nguoidung a = new Nguoidung();
+
+            using (var command = new SQLiteCommand(select, connection))
+            using (var reader = command.ExecuteReader())
             {
-                command.Parameters.AddWithValue("@ma", ma);
-                command.Parameters.AddWithValue("@ten", ten);
-                command.Parameters.AddWithValue("@pass", pass);
-                command.ExecuteNonQuery();
+                if (reader.Read())
+                {
+
+                    a.Ma = reader.GetString(0);
+                    a.Ten = reader.GetString(1);
+                    a.Pass = reader.GetString(2);
+
+                }
+                else
+                    return null;
+            }
+            return a;                
+        }
+        public void InsertNguoidung(SQLiteConnection connection, string ma, string ten, string pass)
+        {
+            var q = GetNguoidung(ma);
+            if (q == null)
+            {
+                string insert = "INSERT INTO nguoidung(ma, ten,pass) VALUES (@ma, @ten, @pass);";
+                using (var command = new SQLiteCommand(insert, connection))
+                {
+                    command.Parameters.AddWithValue("@ma", ma);
+                    command.Parameters.AddWithValue("@ten", ten);
+                    command.Parameters.AddWithValue("@pass", pass);
+                    command.ExecuteNonQuery();
+                }
             }
         }
         static void InsertDulieu(SQLiteConnection connection, int ma, string noidung)
@@ -297,9 +330,9 @@ namespace PQDb.MODEL
         }
 
         // Các thao tác với bảng hopdong
-        static void InsertHopdong(SQLiteConnection connection, string sohopdong, DateTime ngay, string noidung,DateTime batdau, DateTime ketthuc, string ghichu, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
+        public void InsertHopdong( string sohopdong, DateTime ngay, string noidung,DateTime batdau, DateTime ketthuc,double sotien, string ghichu, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
         {
-            string insert = "INSERT INTO hopdong (sohopdong, ngay, noidung, batdau, ketthuc, ghichu, ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan) VALUES (@sohopdong, @ngay, @noidung, @batdau, @ketthuc, @ghichu, @ma, @ten, @diachi, @dienthoai, @masothue, @taikhoannganhang, @sotaikhoan);";
+            string insert = "INSERT INTO hopdong (sohopdong, ngay, noidung, batdau, ketthuc,sotien, ghichu, ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan) VALUES (@sohopdong, @ngay, @noidung, @batdau, @ketthuc,@sotien, @ghichu, @ma, @ten, @diachi, @dienthoai, @masothue, @taikhoannganhang, @sotaikhoan);";
             using (var command = new SQLiteCommand(insert, connection))
             {
                 command.Parameters.AddWithValue("@sohopdong", sohopdong);
@@ -308,6 +341,7 @@ namespace PQDb.MODEL
 
                 command.Parameters.AddWithValue("@batdau", batdau);
                 command.Parameters.AddWithValue("@ketthuc", ketthuc);
+                command.Parameters.AddWithValue("@sotien", sotien);
                 command.Parameters.AddWithValue("@ghichu", ghichu);
 
                 command.Parameters.AddWithValue("@ma", ma);
@@ -322,10 +356,10 @@ namespace PQDb.MODEL
             }
         }
 
-        static void UpdateHopdong(SQLiteConnection connection, int id, string sohopdong, DateTime ngay, string noidung, DateTime batdau, DateTime ketthuc, string ghichu, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
+        public void UpdateHopdong( long id, string sohopdong, DateTime ngay, string noidung, DateTime batdau, DateTime ketthuc,double sotien, string ghichu, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
         {
             string update = "UPDATE hopdong SET sohopdong = @sohopdong, ngay = @ngay, noidung = @noidung," +
-                "batdau =@batdau, ketthuc=@ketthuc, ghichu=@ghichu, " +
+                "batdau =@batdau, ketthuc=@ketthuc,sotien=@sotien, ghichu=@ghichu, " +
                 "ten = @ten, diachi = @diachi, dienthoai = @dienthoai, masothue = @masothue, taikhoannganhang = @taikhoannganhang, sotaikhoan = @sotaikhoan" +
                 " WHERE id = @id;";
             using (var command = new SQLiteCommand(update, connection))
@@ -337,6 +371,7 @@ namespace PQDb.MODEL
 
                 command.Parameters.AddWithValue("@batdau", batdau);
                 command.Parameters.AddWithValue("@ketthuc", ketthuc);
+                command.Parameters.AddWithValue("@sotien", sotien);
                 command.Parameters.AddWithValue("@ghichu", ghichu);
 
                 command.Parameters.AddWithValue("@ma", ma);
@@ -350,7 +385,7 @@ namespace PQDb.MODEL
             }
         }
 
-        static void DeleteHopdong(SQLiteConnection connection, int id)
+        public void DeleteHopdong( long id)
         {
             string delete = "DELETE FROM hopdong WHERE id = @id;";
             using (var command = new SQLiteCommand(delete, connection))
@@ -361,7 +396,7 @@ namespace PQDb.MODEL
         }
 
         // Các thao tác với bảng khachhang
-        static void InsertKhachhang(SQLiteConnection connection, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
+        public void InsertKhachhang(SQLiteConnection connection, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
         {
             string insert = "INSERT INTO khachhang (ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan) VALUES (@ma, @ten, @diachi, @dienthoai, @masothue, @taikhoannganhang, @sotaikhoan);";
             using (var command = new SQLiteCommand(insert, connection))
@@ -377,7 +412,7 @@ namespace PQDb.MODEL
             }
         }
 
-        static void UpdateKhachhang(SQLiteConnection connection, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
+        public void UpdateKhachhang(SQLiteConnection connection, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
         {
             string update = "UPDATE khachhang SET ten = @ten, diachi = @diachi, dienthoai = @dienthoai, masothue = @masothue, taikhoannganhang = @taikhoannganhang, sotaikhoan = @sotaikhoan WHERE ma = @ma;";
             using (var command = new SQLiteCommand(update, connection))
@@ -393,7 +428,7 @@ namespace PQDb.MODEL
             }
         }
 
-        static void DeleteKhachhang(SQLiteConnection connection, string ma)
+        public void DeleteKhachhang(SQLiteConnection connection, string ma)
         {
             string delete = "DELETE FROM khachhang WHERE ma = @ma;";
             using (var command = new SQLiteCommand(delete, connection))
@@ -417,7 +452,7 @@ namespace PQDb.MODEL
 
     public class Hopdong
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Sohopdong { get; set; }
         public DateTime Ngay { get; set; }
         public string Noidung { get; set; }

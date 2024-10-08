@@ -38,7 +38,7 @@ namespace eHopdong.USERCONTROL
         private void btnDangnhap_Click(object sender, EventArgs e)
         {
             bool ok = false;
-            LINQ.DbDataContext db = new LINQ.DbDataContext();
+            PQDb.MODEL.PQDb db = new PQDb.MODEL.PQDb();
             if (txtUser.Text.Trim().Length == 0)
             {
                 Functions.WarningTextbox(txtUser);
@@ -49,23 +49,20 @@ namespace eHopdong.USERCONTROL
                 Functions.OKTextbox(txtUser);
                 if (txtUser.Text.Trim().ToLower() == "phuqui")
                 {
-
-                    var q = db.nhanviens.Where(w => w.ma.ToLower() == txtUser.Text.Trim().ToLower()).FirstOrDefault();
+                    var q = db.GetNguoidung(txtUser.Text.Trim().ToLower());
                     if (q != null)
                     {
                         Functions.OKTextbox(txtUser);
-                        if (q.pass == Functions.getMd5Hash(txtPass.Text))
+                        if (q.Pass == Functions.getMd5Hash(txtPass.Text))
                         {
                             ok = true;
                             PQ.UserName = txtUser.Text.Trim().ToLower();
-                            PQ.Fullname = Functions.ToTitleCase(q.ten);
+                            PQ.Fullname = Functions.ToTitleCase(q.Ten);
                             PQ.Permission = "0";
-                            PQ.Bophan = "Administrator";
-                            PQ.Bophanten = "Nhà phát triển ";
+                            //PQ.Bophan = "Administrator";
+                            //PQ.Bophanten = "Nhà phát triển ";
 
-                            PQ.ngayhethong = db.PQ_NGAYHETHONG().FirstOrDefault().ngay;
-
-  
+                            PQ.ngayhethong = DateTime.Now;  
 
                         }
                         else
@@ -83,42 +80,40 @@ namespace eHopdong.USERCONTROL
                 }
                 else
                 {
-                    var q = db.nhanviens.Where(w => w.ma.ToLower() == txtUser.Text.Trim().ToLower()).FirstOrDefault();
+                    var q = db.GetNguoidung(txtUser.Text.Trim().ToLower());
                     if (q != null)
                     {
                         Functions.OKTextbox(txtUser);
-                        if (q.pass == Functions.getMd5Hash(txtPass.Text) & q.ok.Value)
+                        if (q.Pass == Functions.getMd5Hash(txtPass.Text))
                         {
                             ok = true;
                             PQ.UserName = txtUser.Text.Trim().ToLower();
-                            PQ.Fullname = Functions.ToTitleCase(q.ten);
-                            PQ.Permission = q.nhomquyen.ToString();
+                            PQ.Fullname = Functions.ToTitleCase(q.Ten);
 
-                            var cap = db.nhomquyens.Where(w=>w.ma==q.nhomquyen.Value).FirstOrDefault();
-                            if (cap != null)
-                            {
-                                PQ.Permission = cap.cap.ToString();
-                            }
 
-                            PQ.Bophan = q.bophan;
-                            PQ.Bophanten = "";
+                            PQ.Permission = "0";
+                            //PQ.Bophan = "Administrator";
+                            //PQ.Bophanten = "Nhà phát triển ";
 
-                            var bp = db.phongbans.Where(w=>w.ma==PQ.Bophan).FirstOrDefault();
-                            if (bp != null)
-                            {
-                                PQ.Bophanten = bp.ten;
-                            }
+                            PQ.ngayhethong = DateTime.Now;
 
-                            var ver = db.versions.Where(w => w.ngay.Date > PQ.Version).FirstOrDefault();
-                            if (ver != null)
-                            {
-                                DLG.frm_BaocaoCapnhat f = new DLG.frm_BaocaoCapnhat();
-                                f.ShowDialog();
-                                if (ver.batbuot.Value)
-                                {
-                                    Application.Exit();
-                                }
-                            }
+
+                            //var bp = db.phongbans.Where(w=>w.ma==PQ.Bophan).FirstOrDefault();
+                            //if (bp != null)
+                            //{
+                            //    PQ.Bophanten = bp.ten;
+                            //}
+
+                            //var ver = db.versions.Where(w => w.ngay.Date > PQ.Version).FirstOrDefault();
+                            //if (ver != null)
+                            //{
+                            //    DLG.frm_BaocaoCapnhat f = new DLG.frm_BaocaoCapnhat();
+                            //    f.ShowDialog();
+                            //    if (ver.batbuot.Value)
+                            //    {
+                            //        Application.Exit();
+                            //    }
+                            //}
 
 
                         }

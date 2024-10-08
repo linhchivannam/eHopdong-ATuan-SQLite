@@ -94,6 +94,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="vnConvert">
+      <HintPath>..\..\eShop-DAILOI-2023\eShop\bin\Debug\vnConvert.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
@@ -336,11 +339,23 @@
     <Compile Include="PQ.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="USERCONTROL\DLG\frm_DlgHopdong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="USERCONTROL\DLG\frm_DlgHopdong.Designer.cs">
+      <DependentUpon>frm_DlgHopdong.cs</DependentUpon>
+    </Compile>
     <Compile Include="USERCONTROL\uChangePass.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="USERCONTROL\uChangePass.Designer.cs">
       <DependentUpon>uChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="USERCONTROL\uHopdong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="USERCONTROL\uHopdong.Designer.cs">
+      <DependentUpon>uHopdong.cs</DependentUpon>
     </Compile>
     <Compile Include="USERCONTROL\uLogin.cs">
       <SubType>UserControl</SubType>
@@ -463,8 +478,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="USERCONTROL\DLG\frm_DlgHopdong.resx">
+      <DependentUpon>frm_DlgHopdong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="USERCONTROL\uChangePass.resx">
       <DependentUpon>uChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="USERCONTROL\uHopdong.resx">
+      <DependentUpon>uHopdong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="USERCONTROL\uLogin.resx">
       <DependentUpon>uLogin.cs</DependentUpon>
@@ -492,6 +513,7 @@
     <None Include="Properties\DataSources\eMekong.MODEL.BCChamsoc.datasource" />
     <None Include="Properties\DataSources\eMekong.MODEL.BCDoanhthuloinhuan.datasource" />
     <None Include="Properties\DataSources\eMekong.MODEL.Chamsoc.datasource" />
+    <None Include="Properties\DataSources\PQDb.MODEL.Hopdong.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -592,6 +614,35 @@
       <Project>{38de5f2b-fa95-486b-994c-02ec6d0b6edc}</Project>
       <Name>PQDb</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

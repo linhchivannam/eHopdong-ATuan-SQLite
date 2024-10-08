@@ -75,7 +75,14 @@ namespace eHopdong
         }
         public void OkiLogin()
         {
-           
+            pHome.Controls.Clear();
+            if (!pHome.Controls.Contains(USERCONTROL.uHopdong.Instance))
+            {
+                pHome.Controls.Add(USERCONTROL.uHopdong.Instance);
+              //  USERCONTROL.uHopdong.Instance.Setup();
+                USERCONTROL.uHopdong.Instance.Dock = DockStyle.Fill;
+                USERCONTROL.uHopdong.Instance.BringToFront();
+            }
         }
 
         private void pMy_Click(object sender, EventArgs e)
