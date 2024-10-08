@@ -308,12 +308,13 @@ namespace PQDb.MODEL
             }
         }
 
-        static void UpdateDulieu(SQLiteConnection connection, int ma, string noidung)
+        public void UpdateNguoidung( string ma, string ten, string pass)
         {
-            string update = "UPDATE dulieu SET noidung = @noidung WHERE ma = @ma;";
+            string update = "UPDATE nguoidung SET ten = @ten, pass=@pass WHERE ma = @ma;";
             using (var command = new SQLiteCommand(update, connection))
             {
-                command.Parameters.AddWithValue("@noidung", noidung);
+                command.Parameters.AddWithValue("@ten", ten);
+                command.Parameters.AddWithValue("@pass", pass);
                 command.Parameters.AddWithValue("@ma", ma);
                 command.ExecuteNonQuery();
             }

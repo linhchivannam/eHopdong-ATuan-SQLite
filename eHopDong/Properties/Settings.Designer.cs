@@ -22,16 +22,5 @@ namespace eHopdong.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=eHopdong;Persist Security Info=True;User " +
-            "ID=phuqui;Password=12")]
-        public string eHopdongConnectionString {
-            get {
-                return ((string)(this["eHopdongConnectionString"]));
-            }
-        }
     }
 }

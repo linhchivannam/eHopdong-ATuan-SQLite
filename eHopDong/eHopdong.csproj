@@ -52,15 +52,6 @@
     <Reference Include="Krypton.Toolkit, Version=80.24.3.64, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <HintPath>..\packages\Krypton.Toolkit.80.24.3.64\lib\net472\Krypton.Toolkit.dll</HintPath>
     </Reference>
-    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
-    </Reference>
-    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
-    </Reference>
     <Reference Include="MyAccess">
       <HintPath>..\..\eShop-DAILOI-2023\eShop\bin\Debug\MyAccess.dll</HintPath>
     </Reference>
@@ -94,175 +85,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="vnConvert">
-      <HintPath>..\..\eShop-DAILOI-2023\eShop\bin\Debug\vnConvert.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BAOCAO\frm_DlgChamsoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\frm_DlgChamsoc.Designer.cs">
-      <DependentUpon>frm_DlgChamsoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\frm_DlgDoanhthuBang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\frm_DlgDoanhthuBang.Designer.cs">
-      <DependentUpon>frm_DlgDoanhthuBang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\frm_DlgChamsocBang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\frm_DlgChamsocBang.Designer.cs">
-      <DependentUpon>frm_DlgChamsocBang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\frm_DlgChonBaocao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\frm_DlgChonBaocao.Designer.cs">
-      <DependentUpon>frm_DlgChonBaocao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\frm_DlgHopdongDonvi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\frm_DlgHopdongDonvi.Designer.cs">
-      <DependentUpon>frm_DlgHopdongDonvi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\frm_DlgHopdongcanhan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\frm_DlgHopdongcanhan.Designer.cs">
-      <DependentUpon>frm_DlgHopdongcanhan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\uBaocao.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\uBaocao.Designer.cs">
-      <DependentUpon>uBaocao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\uBaoKHNCC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\uBaoKHNCC.Designer.cs">
-      <DependentUpon>uBaoKHNCC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\uChuyenKH.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\uChuyenKH.Designer.cs">
-      <DependentUpon>uChuyenKH.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\uBaoKHTiemnang.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\uBaoKHTiemnang.Designer.cs">
-      <DependentUpon>uBaoKHTiemnang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\uBaoDoanhthu.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\uBaoDoanhthu.Designer.cs">
-      <DependentUpon>uBaoDoanhthu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\uBaongaykyniem.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\uBaongaykyniem.Designer.cs">
-      <DependentUpon>uBaongaykyniem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\uBaoCTV.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\uBaoCTV.Designer.cs">
-      <DependentUpon>uBaoCTV.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BAOCAO\uBaoChamsoc.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BAOCAO\uBaoChamsoc.Designer.cs">
-      <DependentUpon>uBaoChamsoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DANHMUC\DLG\frm_DlgHotro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DANHMUC\DLG\frm_DlgHotro.Designer.cs">
-      <DependentUpon>frm_DlgHotro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DANHMUC\DLG\frm_DlgHopdong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DANHMUC\DLG\frm_DlgHopdong.Designer.cs">
-      <DependentUpon>frm_DlgHopdong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DANHMUC\DLG\frm_DlgKhachhang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DANHMUC\DLG\frm_DlgKhachhang.Designer.cs">
-      <DependentUpon>frm_DlgKhachhang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DANHMUC\frm_Donvi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DANHMUC\frm_Donvi.Designer.cs">
-      <DependentUpon>frm_Donvi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DANHMUC\frm_Nhanvien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DANHMUC\frm_Nhanvien.Designer.cs">
-      <DependentUpon>frm_Nhanvien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DANHMUC\frm_Phongban.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DANHMUC\frm_Phongban.Designer.cs">
-      <DependentUpon>frm_Phongban.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DANHMUC\frm_Tinh.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DANHMUC\frm_Tinh.Designer.cs">
-      <DependentUpon>frm_Tinh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DANHMUC\uChamsoc.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DANHMUC\uChamsoc.Designer.cs">
-      <DependentUpon>uChamsoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DANHMUC\uHopdong.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DANHMUC\uHopdong.Designer.cs">
-      <DependentUpon>uHopdong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DANHMUC\uKhachhang.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DANHMUC\uKhachhang.Designer.cs">
-      <DependentUpon>uKhachhang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DANHMUC\uQuantri.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DANHMUC\uQuantri.Designer.cs">
-      <DependentUpon>uQuantri.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DLG\frm_BaocaoCapnhat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DLG\frm_BaocaoCapnhat.Designer.cs">
-      <DependentUpon>frm_BaocaoCapnhat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DLG\frm_DlgChuyenKhach.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DLG\frm_DlgChuyenKhach.Designer.cs">
-      <DependentUpon>frm_DlgChuyenKhach.cs</DependentUpon>
-    </Compile>
     <Compile Include="frm_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,58 +102,11 @@
     <Compile Include="HomePQ.Designer.cs">
       <DependentUpon>HomePQ.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Home.Designer.cs">
-      <DependentUpon>Home.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LINQ\Db.cs">
-      <DependentUpon>Db.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="LINQ\Db.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Db.dbml</DependentUpon>
-    </Compile>
     <Compile Include="MODEL\BCChamsoc.cs" />
     <Compile Include="MODEL\BCDoanhthuloinhuan.cs" />
     <Compile Include="MODEL\Chamsoc.cs" />
     <Compile Include="MODEL\KhachhangRutgon.cs" />
-    <Compile Include="PHUQUI\CauhinhHethong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PHUQUI\CauhinhHethong.Designer.cs">
-      <DependentUpon>CauhinhHethong.cs</DependentUpon>
-    </Compile>
     <Compile Include="PHUQUI\CustomDataGridViewCombo.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="PHUQUI\DANHSACHFORM.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PHUQUI\DANHSACHFORM.Designer.cs">
-      <DependentUpon>DANHSACHFORM.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PHUQUI\DlgDieukhien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PHUQUI\DlgDieukhien.Designer.cs">
-      <DependentUpon>DlgDieukhien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PHUQUI\frm_DlgVersion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PHUQUI\frm_DlgVersion.Designer.cs">
-      <DependentUpon>frm_DlgVersion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PHUQUI\frm_DLG_Phanquyen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PHUQUI\frm_DLG_Phanquyen.Designer.cs">
-      <DependentUpon>frm_DLG_Phanquyen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PHUQUI\OvalPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PHUQUI\PQButtonRight.cs">
@@ -363,110 +142,11 @@
     <Compile Include="USERCONTROL\uLogin.Designer.cs">
       <DependentUpon>uLogin.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BAOCAO\frm_DlgChamsoc.resx">
-      <DependentUpon>frm_DlgChamsoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\frm_DlgDoanhthuBang.resx">
-      <DependentUpon>frm_DlgDoanhthuBang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\frm_DlgChamsocBang.resx">
-      <DependentUpon>frm_DlgChamsocBang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\frm_DlgChonBaocao.resx">
-      <DependentUpon>frm_DlgChonBaocao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\frm_DlgHopdongDonvi.resx">
-      <DependentUpon>frm_DlgHopdongDonvi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\frm_DlgHopdongcanhan.resx">
-      <DependentUpon>frm_DlgHopdongcanhan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\uBaocao.resx">
-      <DependentUpon>uBaocao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\uBaoKHNCC.resx">
-      <DependentUpon>uBaoKHNCC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\uChuyenKH.resx">
-      <DependentUpon>uChuyenKH.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\uBaoKHTiemnang.resx">
-      <DependentUpon>uBaoKHTiemnang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\uBaoDoanhthu.resx">
-      <DependentUpon>uBaoDoanhthu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\uBaongaykyniem.resx">
-      <DependentUpon>uBaongaykyniem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\uBaoCTV.resx">
-      <DependentUpon>uBaoCTV.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BAOCAO\uBaoChamsoc.resx">
-      <DependentUpon>uBaoChamsoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DANHMUC\DLG\frm_DlgHotro.resx">
-      <DependentUpon>frm_DlgHotro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DANHMUC\DLG\frm_DlgHopdong.resx">
-      <DependentUpon>frm_DlgHopdong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DANHMUC\DLG\frm_DlgKhachhang.resx">
-      <DependentUpon>frm_DlgKhachhang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DANHMUC\frm_Donvi.resx">
-      <DependentUpon>frm_Donvi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DANHMUC\frm_Nhanvien.resx">
-      <DependentUpon>frm_Nhanvien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DANHMUC\frm_Phongban.resx">
-      <DependentUpon>frm_Phongban.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DANHMUC\frm_Tinh.resx">
-      <DependentUpon>frm_Tinh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DANHMUC\uChamsoc.resx">
-      <DependentUpon>uChamsoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DANHMUC\uHopdong.resx">
-      <DependentUpon>uHopdong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DANHMUC\uKhachhang.resx">
-      <DependentUpon>uKhachhang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DANHMUC\uQuantri.resx">
-      <DependentUpon>uQuantri.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DLG\frm_BaocaoCapnhat.resx">
-      <DependentUpon>frm_BaocaoCapnhat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DLG\frm_DlgChuyenKhach.resx">
-      <DependentUpon>frm_DlgChuyenKhach.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frm_Main.resx">
       <DependentUpon>frm_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomePQ.resx">
       <DependentUpon>HomePQ.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home.resx">
-      <DependentUpon>Home.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PHUQUI\CauhinhHethong.resx">
-      <DependentUpon>CauhinhHethong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PHUQUI\DANHSACHFORM.resx">
-      <DependentUpon>DANHSACHFORM.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PHUQUI\DlgDieukhien.resx">
-      <DependentUpon>DlgDieukhien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PHUQUI\frm_DlgVersion.resx">
-      <DependentUpon>frm_DlgVersion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PHUQUI\frm_DLG_Phanquyen.resx">
-      <DependentUpon>frm_DLG_Phanquyen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -490,14 +170,6 @@
     <EmbeddedResource Include="USERCONTROL\uLogin.resx">
       <DependentUpon>uLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LINQ\Db.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Db.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LINQ\Db.dbml.layout">
-      <DependentUpon>Db.dbml</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\eMekong.LINQ.coquandonvi.datasource" />
     <None Include="Properties\DataSources\eMekong.LINQ.cungcapdichvu.datasource" />
@@ -528,7 +200,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DATA\" />
     <Folder Include="KINHDOANH\" />
   </ItemGroup>
   <ItemGroup>
@@ -629,15 +300,6 @@
       <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>8</VersionMajor>
       <VersionMinor>7</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="VBIDE">
-      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>5</VersionMajor>
-      <VersionMinor>3</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>

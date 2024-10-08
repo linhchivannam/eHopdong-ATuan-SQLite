@@ -162,26 +162,7 @@ namespace eHopdong
             }
             return null;
         }
-        private void pqButton2_Click(object sender, EventArgs e)
-        {
-            pHome.Controls.Clear();
-            if (!pHome.Controls.Contains(DANHMUC.uBaoCTV.Instance))
-            {
-                pHome.Controls.Add(DANHMUC.uBaoCTV.Instance);
-                DANHMUC.uBaoCTV.Instance.LoadTinh();
-                DANHMUC.uBaoCTV.Instance.LoadKhachhang();
-                DANHMUC.uBaoCTV.Instance.Dock = DockStyle.Fill;
-                DANHMUC.uBaoCTV.Instance.BringToFront();
-            }
-            else
-            {
-                var tim = TimObjectHome("uKhachhang");
-                if (tim != null)
-                {
-                    ((DANHMUC.uBaoCTV)tim).LoadTinh();
-                }
-            }
-        }
+        
 
         private void pqHome_Click(object sender, EventArgs e)
         {
@@ -195,17 +176,7 @@ namespace eHopdong
             //}
         }
 
-        private void pqQuantri_Click(object sender, EventArgs e)
-        {
-            pHome.Controls.Clear();
-            if (!pHome.Controls.Contains(DANHMUC.uQuantri.Instance))
-            {
-                pHome.Controls.Add(DANHMUC.uQuantri.Instance);
-                DANHMUC.uQuantri.Instance.myhome = this;
-                DANHMUC.uQuantri.Instance.Dock = DockStyle.Fill;
-                DANHMUC.uQuantri.Instance.BringToFront();
-            }
-        }
+        
 
         private void lbDangxuat_Click(object sender, EventArgs e)
         {
@@ -228,74 +199,10 @@ namespace eHopdong
             
         }
 
-        private void pqHopdong_Click(object sender, EventArgs e)
-        {
-            pHome.Controls.Clear();
-            if (!pHome.Controls.Contains(DANHMUC.uHopdong.Instance))
-            {
-                pHome.Controls.Add(DANHMUC.uHopdong.Instance);
-                DANHMUC.uHopdong.Instance.LoadData();
-                DANHMUC.uHopdong.Instance.Dock = DockStyle.Fill;
-                DANHMUC.uHopdong.Instance.BringToFront();
-            }
-            
-        }
+       
 
-        private void pqLienhe_Click(object sender, EventArgs e)
-        {
-            pHome.Controls.Clear();
-            if (!pHome.Controls.Contains(DANHMUC.uChamsoc.Instance))
-            {
-                pHome.Controls.Add(DANHMUC.uChamsoc.Instance);
-                DANHMUC.uChamsoc.Instance.LoadData();
-                DANHMUC.uChamsoc.Instance.Dock = DockStyle.Fill;
-                DANHMUC.uChamsoc.Instance.BringToFront();
-            }
-        }
-        public void BaocaoNgaykyniem()
-        {
-            pHome.Controls.Clear();
-            if (!pHome.Controls.Contains(BAOCAO.uBaongaykyniem.Instance))
-            {
-                pHome.Controls.Add(BAOCAO.uBaongaykyniem.Instance);
-                BAOCAO.uBaongaykyniem.Instance.LoadData();
-                BAOCAO.uBaongaykyniem.Instance.Dock = DockStyle.Fill;
-                BAOCAO.uBaongaykyniem.Instance.BringToFront();
-            }
-        }
-        public void BaocaoKHTiemnang()
-        {
-            pHome.Controls.Clear();
-            if (!pHome.Controls.Contains(BAOCAO.uBaoKHTiemnang.Instance))
-            {
-                pHome.Controls.Add(BAOCAO.uBaoKHTiemnang.Instance);
-                BAOCAO.uBaoKHTiemnang.Instance.LoadTinh();
-                BAOCAO.uBaoKHTiemnang.Instance.Dock = DockStyle.Fill;
-                BAOCAO.uBaoKHTiemnang.Instance.BringToFront();
-            }
-        }
-        public void BaocaoKHNCC()
-        {
-            pHome.Controls.Clear();
-            if (!pHome.Controls.Contains(BAOCAO.uBaoKHNCC.Instance))
-            {
-                pHome.Controls.Add(BAOCAO.uBaoKHNCC.Instance);
-                BAOCAO.uBaoKHNCC.Instance.LoadTinh();
-                BAOCAO.uBaoKHNCC.Instance.Dock = DockStyle.Fill;
-                BAOCAO.uBaoKHNCC.Instance.BringToFront();
-            }
-        }
-        public void BaocaoCongtacvien()
-        {
-            pHome.Controls.Clear();
-            if (!pHome.Controls.Contains(BAOCAO.uBaoCTV.Instance))
-            {
-                pHome.Controls.Add(BAOCAO.uBaoCTV.Instance);
-                BAOCAO.uBaoCTV.Instance.LoadTinh();
-                BAOCAO.uBaoCTV.Instance.Dock = DockStyle.Fill;
-                BAOCAO.uBaoCTV.Instance.BringToFront();
-            }
-        }
+        
+       
         private void btnMax_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -304,71 +211,7 @@ namespace eHopdong
                 this.WindowState = FormWindowState.Maximized;
         }
 
-        private void pqBaocao_Click(object sender, EventArgs e)
-        {
-            BAOCAO.frm_DlgChonBaocao f = new BAOCAO.frm_DlgChonBaocao();
-            PQ.iChon = 0;
-            f.ShowDialog();
-            if (PQ.iChon > 0)
-            {
-                if (PQ.iChon == 1)
-                    BaocaoNgaykyniem();
-                else if (PQ.iChon == 2)
-                {
-                    BaocaoCongtacvien();
-                }
-                else if (PQ.iChon == 3)
-                {
-                    BaocaoChamsoc();
-                }
-                else if (PQ.iChon == 4)
-                {
-                    BaocaoDoanhthu();
-                }
-                else if (PQ.iChon == 5)
-                {
-                    BaocaoKHTiemnang();
-                }
-                else if (PQ.iChon == 6)
-                {
-                    BaocaoKHNCC();
-                }
-            }
-            
-            
-        }
-        public void BaocaoDoanhthu()
-        {
-            pHome.Controls.Clear();
-            if (!pHome.Controls.Contains(BAOCAO.uBaoDoanhthu.Instance))
-            {
-                pHome.Controls.Add(BAOCAO.uBaoDoanhthu.Instance);
-                BAOCAO.uBaoDoanhthu.Instance.LoadData();
-                BAOCAO.uBaoDoanhthu.Instance.Dock = DockStyle.Fill;
-                BAOCAO.uBaoDoanhthu.Instance.BringToFront();
-            }
-        }
-        public void BaocaoChamsoc()
-        {
-            pHome.Controls.Clear();
-            if (!pHome.Controls.Contains(BAOCAO.uBaoChamsoc.Instance))
-            {
-                pHome.Controls.Add(BAOCAO.uBaoChamsoc.Instance);
-                BAOCAO.uBaoChamsoc.Instance.LoadData();
-                BAOCAO.uBaoChamsoc.Instance.Dock = DockStyle.Fill;
-                BAOCAO.uBaoChamsoc.Instance.BringToFront();
-            }
-        }
-        public void Luanchuyen()
-        {
-            pHome.Controls.Clear();
-            if (!pHome.Controls.Contains(BAOCAO.uChuyenKH.Instance))
-            {
-                pHome.Controls.Add(BAOCAO.uChuyenKH.Instance);
-          
-                BAOCAO.uChuyenKH.Instance.Dock = DockStyle.Fill;
-                BAOCAO.uChuyenKH.Instance.BringToFront();
-            }
-        }
+      
+       
     }
 }

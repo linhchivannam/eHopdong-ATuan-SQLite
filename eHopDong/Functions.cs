@@ -162,60 +162,60 @@ namespace eHopdong
         {
             txt.BackColor = System.Drawing.SystemColors.Window;
         }
-        public static bool KiemtraQuyen( LINQ.DbDataContext db,string myform, DateTime ngay, string action)
-        {
-            bool rs = false;
+        //public static bool KiemtraQuyen( LINQ.DbDataContext db,string myform, DateTime ngay, string action)
+        //{
+        //    bool rs = false;
 
-            TimeSpan Time = PQ.ngayhethong - ngay;
-            int TongSoNgay = Time.Days;
-            if (PQ.Permission == "0")
-                return true;
-           // return true;
-            var q = db.nhanviens.Where(w => w.ma.ToLower() == PQ.UserName.ToLower()).FirstOrDefault();
-            if (q != null)
-            {
-                var tim = db.phanquyens.Where(w => w.form == myform & w.quyen == q.nhomquyen.ToString()).FirstOrDefault();
-                if (tim != null)
-                {
-                    if (action == "sua")
-                    {
-                        if (tim.sua.Value)
-                        {
-                            if (TongSoNgay <= tim.suangay)
-                            {
-                                rs = true;
-                            }
-                        }
-                    }
-                    else if (action == "xoa")
-                    {
-                        if (tim.xoa.Value)
-                        {
-                            if (TongSoNgay <= tim.xoangay)
-                            {
-                                rs = true;
-                            }
-                        }
-                    }
-                    else if (action == "them")
-                    {
-                        if (tim.them.Value)
-                        {
-                            if (TongSoNgay <= tim.themngay)
-                            {
-                                rs = true;
-                            }
-                        }
-                    }
-                }
-            }
+        //    TimeSpan Time = PQ.ngayhethong - ngay;
+        //    int TongSoNgay = Time.Days;
+        //    if (PQ.Permission == "0")
+        //        return true;
+        //   // return true;
+        //    var q = db.nhanviens.Where(w => w.ma.ToLower() == PQ.UserName.ToLower()).FirstOrDefault();
+        //    if (q != null)
+        //    {
+        //        var tim = db.phanquyens.Where(w => w.form == myform & w.quyen == q.nhomquyen.ToString()).FirstOrDefault();
+        //        if (tim != null)
+        //        {
+        //            if (action == "sua")
+        //            {
+        //                if (tim.sua.Value)
+        //                {
+        //                    if (TongSoNgay <= tim.suangay)
+        //                    {
+        //                        rs = true;
+        //                    }
+        //                }
+        //            }
+        //            else if (action == "xoa")
+        //            {
+        //                if (tim.xoa.Value)
+        //                {
+        //                    if (TongSoNgay <= tim.xoangay)
+        //                    {
+        //                        rs = true;
+        //                    }
+        //                }
+        //            }
+        //            else if (action == "them")
+        //            {
+        //                if (tim.them.Value)
+        //                {
+        //                    if (TongSoNgay <= tim.themngay)
+        //                    {
+        //                        rs = true;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
 
-            if (!rs)
-            {
-                MessageBox.Show("Bạn chưa được cấp quyền", "Thông báo");
-            }
-            return rs;
-        }
+        //    if (!rs)
+        //    {
+        //        MessageBox.Show("Bạn chưa được cấp quyền", "Thông báo");
+        //    }
+        //    return rs;
+        //}
         public static void DisableAll(Panel gp)
         {
             foreach (Control ctrl in gp.Controls)

@@ -31,18 +31,18 @@ namespace eHopdong.USERCONTROL
 
         private void btnDangnhap_Click(object sender, EventArgs e)
         {
-            LINQ.DbDataContext mn = new LINQ.DbDataContext();
-            var query = mn.nhanviens.Where(w => w.ma == PQ.UserName).FirstOrDefault();
+            PQDb.MODEL.PQDb mn = new PQDb.MODEL.PQDb();
+            var query = mn.GetNguoidung(PQ.UserName);
             if (query != null)
             {
-                if (query.pass == Functions.getMd5Hash(txtpassCu.Text))
+                if (query.Pass == Functions.getMd5Hash(txtpassCu.Text))
                 {
                     if (txtPass.Text == txtpasmoi.Text & txtPass.Text.Length > 0)
                     {
-                        query.pass = Functions.getMd5Hash(txtPass.Text);
+                        mn.UpdateNguoidung(query.Ma, query.Ten, Functions.getMd5Hash(txtPass.Text));
+                      //  query.Pass = Functions.getMd5Hash(txtPass.Text);
                     }
-                }
-                mn.SubmitChanges();
+                }               
                 MessageBox.Show("Cập nhật thành công", "Thông báo");
             }
         }

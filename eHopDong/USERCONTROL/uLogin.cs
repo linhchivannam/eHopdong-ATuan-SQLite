@@ -149,8 +149,8 @@ namespace eHopdong.USERCONTROL
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    PHUQUI.CauhinhHethong f = new PHUQUI.CauhinhHethong();
-                    f.ShowDialog();
+                    //PHUQUI.CauhinhHethong f = new PHUQUI.CauhinhHethong();
+                    //f.ShowDialog();
                 }
             }
             if (e.KeyCode == Keys.Enter)
