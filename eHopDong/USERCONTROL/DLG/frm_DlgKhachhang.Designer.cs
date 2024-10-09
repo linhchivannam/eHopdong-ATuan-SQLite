@@ -29,18 +29,24 @@ namespace eHopdong.USERCONTROL.DLG
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pLeft = new Krypton.Toolkit.KryptonPanel();
             this.dgv = new Krypton.Toolkit.KryptonDataGridView();
             this.Ma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nguoidungBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Daidien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Chucvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Diachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dienthoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Masothue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Taikhoannganhang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sotaikhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.txtSum = new System.Windows.Forms.TextBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pValue = new Krypton.Toolkit.KryptonPanel();
+            this.btnChon = new Krypton.Toolkit.KryptonButton();
             this.label14 = new System.Windows.Forms.Label();
             this.txtKHChucvu = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -66,15 +72,15 @@ namespace eHopdong.USERCONTROL.DLG
             this.btnXoa = new Krypton.Toolkit.KryptonButton();
             this.btnSua = new Krypton.Toolkit.KryptonButton();
             this.btnThem = new Krypton.Toolkit.KryptonButton();
-            this.btnChon = new Krypton.Toolkit.KryptonButton();
+            this.khachhangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pLeft)).BeginInit();
             this.pLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nguoidungBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pValue)).BeginInit();
             this.pValue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.khachhangBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pLeft
@@ -91,8 +97,8 @@ namespace eHopdong.USERCONTROL.DLG
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.AutoGenerateColumns = false;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.ColumnHeadersHeight = 25;
@@ -100,8 +106,14 @@ namespace eHopdong.USERCONTROL.DLG
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ma,
             this.Ten,
-            this.Pass});
-            this.dgv.DataSource = this.nguoidungBindingSource;
+            this.Daidien,
+            this.Chucvu,
+            this.Diachi,
+            this.Dienthoai,
+            this.Masothue,
+            this.Taikhoannganhang,
+            this.Sotaikhoan});
+            this.dgv.DataSource = this.khachhangBindingSource;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.Location = new System.Drawing.Point(0, 44);
             this.dgv.Name = "dgv";
@@ -115,7 +127,7 @@ namespace eHopdong.USERCONTROL.DLG
             // Ma
             // 
             this.Ma.DataPropertyName = "Ma";
-            this.Ma.HeaderText = "Mã";
+            this.Ma.HeaderText = "Mã KH";
             this.Ma.Name = "Ma";
             this.Ma.ReadOnly = true;
             // 
@@ -123,21 +135,65 @@ namespace eHopdong.USERCONTROL.DLG
             // 
             this.Ten.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Ten.DataPropertyName = "Ten";
-            this.Ten.HeaderText = "Tên";
+            this.Ten.HeaderText = "Khách hàng";
             this.Ten.Name = "Ten";
             this.Ten.ReadOnly = true;
             // 
-            // Pass
+            // Daidien
             // 
-            this.Pass.DataPropertyName = "Pass";
-            this.Pass.HeaderText = "Pass";
-            this.Pass.Name = "Pass";
-            this.Pass.ReadOnly = true;
-            this.Pass.Visible = false;
+            this.Daidien.DataPropertyName = "Daidien";
+            this.Daidien.HeaderText = "Daidien";
+            this.Daidien.Name = "Daidien";
+            this.Daidien.ReadOnly = true;
+            this.Daidien.Visible = false;
             // 
-            // nguoidungBindingSource
+            // Chucvu
             // 
-            this.nguoidungBindingSource.DataSource = typeof(PQDb.MODEL.Nguoidung);
+            this.Chucvu.DataPropertyName = "Chucvu";
+            this.Chucvu.HeaderText = "Chucvu";
+            this.Chucvu.Name = "Chucvu";
+            this.Chucvu.ReadOnly = true;
+            this.Chucvu.Visible = false;
+            // 
+            // Diachi
+            // 
+            this.Diachi.DataPropertyName = "Diachi";
+            this.Diachi.HeaderText = "Diachi";
+            this.Diachi.Name = "Diachi";
+            this.Diachi.ReadOnly = true;
+            this.Diachi.Visible = false;
+            // 
+            // Dienthoai
+            // 
+            this.Dienthoai.DataPropertyName = "Dienthoai";
+            this.Dienthoai.HeaderText = "Dienthoai";
+            this.Dienthoai.Name = "Dienthoai";
+            this.Dienthoai.ReadOnly = true;
+            this.Dienthoai.Visible = false;
+            // 
+            // Masothue
+            // 
+            this.Masothue.DataPropertyName = "Masothue";
+            this.Masothue.HeaderText = "Masothue";
+            this.Masothue.Name = "Masothue";
+            this.Masothue.ReadOnly = true;
+            this.Masothue.Visible = false;
+            // 
+            // Taikhoannganhang
+            // 
+            this.Taikhoannganhang.DataPropertyName = "Taikhoannganhang";
+            this.Taikhoannganhang.HeaderText = "Taikhoannganhang";
+            this.Taikhoannganhang.Name = "Taikhoannganhang";
+            this.Taikhoannganhang.ReadOnly = true;
+            this.Taikhoannganhang.Visible = false;
+            // 
+            // Sotaikhoan
+            // 
+            this.Sotaikhoan.DataPropertyName = "Sotaikhoan";
+            this.Sotaikhoan.HeaderText = "Sotaikhoan";
+            this.Sotaikhoan.Name = "Sotaikhoan";
+            this.Sotaikhoan.ReadOnly = true;
+            this.Sotaikhoan.Visible = false;
             // 
             // kryptonPanel2
             // 
@@ -165,9 +221,9 @@ namespace eHopdong.USERCONTROL.DLG
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(193, 12);
+            this.txtSearch.Location = new System.Drawing.Point(86, 12);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(238, 23);
+            this.txtSearch.Size = new System.Drawing.Size(345, 23);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -177,7 +233,7 @@ namespace eHopdong.USERCONTROL.DLG
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(126, 15);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 2;
@@ -217,6 +273,16 @@ namespace eHopdong.USERCONTROL.DLG
             this.pValue.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.HeaderSecondary;
             this.pValue.Size = new System.Drawing.Size(433, 418);
             this.pValue.TabIndex = 1;
+            // 
+            // btnChon
+            // 
+            this.btnChon.Location = new System.Drawing.Point(6, 384);
+            this.btnChon.Name = "btnChon";
+            this.btnChon.Size = new System.Drawing.Size(415, 25);
+            this.btnChon.TabIndex = 305;
+            this.btnChon.Values.Image = global::eHopdong.Properties.Resources.zalo;
+            this.btnChon.Values.Text = "Chọn khách hàng";
+            this.btnChon.Click += new System.EventHandler(this.btnChon_Click);
             // 
             // label14
             // 
@@ -279,11 +345,11 @@ namespace eHopdong.USERCONTROL.DLG
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Location = new System.Drawing.Point(-11, 296);
+            this.label12.Location = new System.Drawing.Point(13, 296);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(106, 17);
+            this.label12.Size = new System.Drawing.Size(82, 17);
             this.label12.TabIndex = 298;
-            this.label12.Text = "Tại Ngân hàng:";
+            this.label12.Text = "Ngân hàng:";
             // 
             // txtKHNH
             // 
@@ -461,14 +527,9 @@ namespace eHopdong.USERCONTROL.DLG
             this.btnThem.Values.Text = "Thêm mới";
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // btnChon
+            // khachhangBindingSource
             // 
-            this.btnChon.Location = new System.Drawing.Point(6, 382);
-            this.btnChon.Name = "btnChon";
-            this.btnChon.Size = new System.Drawing.Size(415, 25);
-            this.btnChon.TabIndex = 305;
-            this.btnChon.Values.Image = global::eHopdong.Properties.Resources.zalo;
-            this.btnChon.Values.Text = "Chọn khách hàng";
+            this.khachhangBindingSource.DataSource = typeof(PQDb.MODEL.Khachhang);
             // 
             // frm_DlgKhachhang
             // 
@@ -489,13 +550,13 @@ namespace eHopdong.USERCONTROL.DLG
             ((System.ComponentModel.ISupportInitialize)(this.pLeft)).EndInit();
             this.pLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nguoidungBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pValue)).EndInit();
             this.pValue.ResumeLayout(false);
             this.pValue.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.khachhangBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -506,10 +567,6 @@ namespace eHopdong.USERCONTROL.DLG
         private Krypton.Toolkit.KryptonPanel pValue;
         private Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private Krypton.Toolkit.KryptonDataGridView dgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ten;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
-        private System.Windows.Forms.BindingSource nguoidungBindingSource;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSum;
@@ -539,5 +596,15 @@ namespace eHopdong.USERCONTROL.DLG
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox txtKHDiachi;
         private Krypton.Toolkit.KryptonButton btnChon;
+        private System.Windows.Forms.BindingSource khachhangBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ten;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Daidien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Chucvu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Diachi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dienthoai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Masothue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Taikhoannganhang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sotaikhoan;
     }
 }

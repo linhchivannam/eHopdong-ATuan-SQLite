@@ -17,15 +17,23 @@ namespace eHopdong.USERCONTROL.DLG
         }
 
         PQDb.MODEL.PQDb db;
-        List<PQDb.MODEL.Nguoidung> ds;
+        List<PQDb.MODEL.Khachhang> ds;
         bool sua = false;
         private void dgv_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                //txtMa.Text = dgv.Rows[e.RowIndex].Cells["Ma"].Value.ToString();
-                //txtTen.Text = dgv.Rows[e.RowIndex].Cells["Ten"].Value.ToString();
-               
+                txtKHma.Text = dgv.Rows[e.RowIndex].Cells["Ma"].Value.ToString();
+                txtKHten.Text = dgv.Rows[e.RowIndex].Cells["Ten"].Value.ToString();
+
+                txtKHDaidien.Text = dgv.Rows[e.RowIndex].Cells["Daidien"].Value.ToString();
+                txtKHChucvu.Text = dgv.Rows[e.RowIndex].Cells["Chucvu"].Value.ToString();
+                txtKHDiachi.Text = dgv.Rows[e.RowIndex].Cells["Diachi"].Value.ToString();
+                txtKhDienthoai.Text = dgv.Rows[e.RowIndex].Cells["Dienthoai"].Value.ToString();
+                txtKHMST.Text = dgv.Rows[e.RowIndex].Cells["Masothue"].Value.ToString();
+                txtKHSoTK.Text = dgv.Rows[e.RowIndex].Cells["Sotaikhoan"].Value.ToString();
+                txtKHNH.Text = dgv.Rows[e.RowIndex].Cells["Taikhoannganhang"].Value.ToString();               
+
             }
             catch (Exception a)
             {
@@ -36,21 +44,21 @@ namespace eHopdong.USERCONTROL.DLG
         private void frm_DlgUser_Load(object sender, EventArgs e)
         {
             db = new PQDb.MODEL.PQDb();
-            ds = new List<PQDb.MODEL.Nguoidung>();
+            ds = new List<PQDb.MODEL.Khachhang>();
             Setup();
             btnHuy.PerformClick();
         }
         private void Setup()
         {
             ds.Clear();
-            var q = db.GetDSNguoidung();
+            var q = db.GetKhachhang();
             ds.AddRange(q);
             Search();
         }
         private void Search()
         {
             var q = ds.Where(w=>w.Ma.ToLower().Contains(txtSearch.Text.Trim().ToLower()) || w.Ten.ToLower().Contains(txtSearch.Text.Trim().ToLower()));
-            nguoidungBindingSource.DataSource = q.ToList();
+            khachhangBindingSource.DataSource = q.ToList();
             txtSum.Text = dgv.RowCount.ToString();
         }
 
@@ -58,11 +66,40 @@ namespace eHopdong.USERCONTROL.DLG
         {
             Search();
         }
+        private bool Check_NoExist()
+        {
+            int i = 0;
+            i += Functions.CheckTexboxnotNull(txtKHten);
 
+            if (i > 0)
+                return false;            
+
+            return true;
+        }
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            
-            Setup();
+            if (Check_NoExist())
+            {
+                bool fl = true;
+                if (sua)
+                {
+                    db.UpdateKhachhang(txtKHma.Text, txtKHten.Text, txtKHDaidien.Text, txtKHChucvu.Text, txtKHDiachi.Text, txtKhDienthoai.Text, txtKHMST.Text, txtKHNH.Text, txtKHSoTK.Text);
+                }
+                else
+                {
+
+                    db.InsertKhachhang( txtKHma.Text, txtKHten.Text, txtKHDaidien.Text, txtKHChucvu.Text, txtKHDiachi.Text, txtKhDienthoai.Text, txtKHMST.Text, txtKHNH.Text, txtKHSoTK.Text);
+                }
+
+                if (fl)
+                {
+
+                    PQ.ClickOK = true;
+                    MessageBox.Show("Lưu hoàn thành!", "Thông báo");
+                    Setup();
+                    btnHuy.PerformClick();
+                }
+            }
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -131,6 +168,16 @@ namespace eHopdong.USERCONTROL.DLG
 
             dgv.Enabled = true;
             Functions.DisableAll(pValue);
+        }
+
+        private void btnChon_Click(object sender, EventArgs e)
+        {
+            if (txtKHma.Text.Trim().Length > 0)
+            {
+                PQ.tamma = txtKHma.Text.Trim();
+                PQ.ClickOK = true;
+                this.Close();
+            }
         }
     }
 }

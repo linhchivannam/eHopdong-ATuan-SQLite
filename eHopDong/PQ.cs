@@ -26,6 +26,7 @@ namespace eHopdong
         public static DateTime ngayhethong = DateTime.Now;
         public static int sothangxem = 12;
         public static int iChon = 0;
+        public static string tamma = "";
 
         public static Color cl_Banhang = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
         public static Color cl_Nhap = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));

@@ -174,7 +174,7 @@ namespace PQDb.MODEL
         {
             Hopdong a = new Hopdong();
             List<Hopdong> hopdongList = new List<Hopdong>();
-            string select = "SELECT id, sohopdong, ngay, noidung, batdau, ketthuc,ghichu ,ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan,sotien FROM hopdong where id='" + where + "' limit 1;";
+            string select = "SELECT id, sohopdong, ngay, noidung, batdau, ketthuc,ghichu ,ma, ten,daidien,chucvu, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan,sotien FROM hopdong where id='" + where + "' limit 1;";
 
             using (var command = new SQLiteCommand(select, connection))
             using (var reader = command.ExecuteReader())
@@ -191,12 +191,16 @@ namespace PQDb.MODEL
                     a.Ghichu = reader.GetString(6);
                     a.Ma = reader.GetString(7);
                     a.Ten = reader.GetString(8);
-                    a.Diachi = reader.GetString(9);
-                    a.Dienthoai = reader.GetString(10);
-                    a.Masothue = reader.GetString(11);
-                    a.Taikhoannganhang = reader.GetString(12);
-                    a.Sotaikhoan = reader.GetString(13);
-                    a.Sotien = reader.GetDouble(14);
+
+                    a.Daidien = reader.GetString(9);
+                    a.Chucvu = reader.GetString(10);
+
+                    a.Diachi = reader.GetString(11);
+                    a.Dienthoai = reader.GetString(12);
+                    a.Masothue = reader.GetString(13);
+                    a.Taikhoannganhang = reader.GetString(14);
+                    a.Sotaikhoan = reader.GetString(15);
+                    a.Sotien = reader.GetDouble(16);
                     return a;
                 }
               //  return null;
@@ -208,7 +212,7 @@ namespace PQDb.MODEL
         public List<Hopdong> GetHopdong( string where)
         {
             List<Hopdong> hopdongList = new List<Hopdong>();
-            string select = "SELECT id, sohopdong, ngay, noidung, batdau, ketthuc,ghichu ,ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan,sotien FROM hopdong "+where+";";
+            string select = "SELECT id, sohopdong, ngay, noidung, batdau, ketthuc,ghichu ,ma, ten,daidien,chucvu, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan,sotien FROM hopdong "+where+";";
 
             using (var command = new SQLiteCommand(select, connection))
             using (var reader = command.ExecuteReader())
@@ -226,12 +230,16 @@ namespace PQDb.MODEL
                         Ghichu = reader.GetString(6),
                         Ma = reader.GetString(7),
                         Ten = reader.GetString(8),
-                        Diachi = reader.GetString(9),
-                        Dienthoai = reader.GetString(10),
-                        Masothue = reader.GetString(11),
-                        Taikhoannganhang = reader.GetString(12),
-                        Sotaikhoan = reader.GetString(13),
-                        Sotien = reader.GetDouble(14)
+
+                        Daidien = reader.GetString(9),
+                        Chucvu = reader.GetString(10),
+
+                        Diachi = reader.GetString(11),
+                        Dienthoai = reader.GetString(12),
+                        Masothue = reader.GetString(13),
+                        Taikhoannganhang = reader.GetString(14),
+                        Sotaikhoan = reader.GetString(15),
+                        Sotien = reader.GetDouble(16)
                     });
                 }
             }
@@ -243,7 +251,7 @@ namespace PQDb.MODEL
         public List<Khachhang> GetKhachhang()
         {
             List<Khachhang> khachhangList = new List<Khachhang>();
-            string select = "SELECT ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan FROM khachhang;";
+            string select = "SELECT ma, ten,daidien,chucvu, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan FROM khachhang;";
 
             using (var command = new SQLiteCommand(select, connection))
             using (var reader = command.ExecuteReader())
@@ -254,11 +262,15 @@ namespace PQDb.MODEL
                     {
                         Ma = reader.GetString(0),
                         Ten = reader.GetString(1),
-                        Diachi = reader.GetString(2),
-                        Dienthoai = reader.GetString(3),
-                        Masothue = reader.GetString(4),
-                        Taikhoannganhang = reader.GetString(5),
-                        Sotaikhoan = reader.GetString(6)
+
+                        Daidien = reader.GetString(2),
+                        Chucvu = reader.GetString(3),
+
+                        Diachi = reader.GetString(4),
+                        Dienthoai = reader.GetString(5),
+                        Masothue = reader.GetString(6),
+                        Taikhoannganhang = reader.GetString(7),
+                        Sotaikhoan = reader.GetString(8)
                     });
                 }
             }
@@ -462,13 +474,15 @@ namespace PQDb.MODEL
         }
 
         // Các thao tác với bảng khachhang
-        public void InsertKhachhang(SQLiteConnection connection, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
+        public void InsertKhachhang( string ma, string ten, string daidien, string chucvu, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
         {
-            string insert = "INSERT INTO khachhang (ma, ten, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan) VALUES (@ma, @ten, @diachi, @dienthoai, @masothue, @taikhoannganhang, @sotaikhoan);";
+            string insert = "INSERT INTO khachhang (ma, ten,daidien,chucvu, diachi, dienthoai, masothue, taikhoannganhang, sotaikhoan) VALUES (@ma, @ten,@daidien,@chucvu, @diachi, @dienthoai, @masothue, @taikhoannganhang, @sotaikhoan);";
             using (var command = new SQLiteCommand(insert, connection))
             {
                 command.Parameters.AddWithValue("@ma", ma);
                 command.Parameters.AddWithValue("@ten", ten);
+                command.Parameters.AddWithValue("@daidien", daidien);
+                command.Parameters.AddWithValue("@chucvu", chucvu);
                 command.Parameters.AddWithValue("@diachi", diachi);
                 command.Parameters.AddWithValue("@dienthoai", dienthoai);
                 command.Parameters.AddWithValue("@masothue", masothue);
@@ -478,13 +492,15 @@ namespace PQDb.MODEL
             }
         }
 
-        public void UpdateKhachhang(SQLiteConnection connection, string ma, string ten, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
+        public void UpdateKhachhang( string ma, string ten,string daidien, string chucvu, string diachi, string dienthoai, string masothue, string taikhoannganhang, string sotaikhoan)
         {
-            string update = "UPDATE khachhang SET ten = @ten, diachi = @diachi, dienthoai = @dienthoai, masothue = @masothue, taikhoannganhang = @taikhoannganhang, sotaikhoan = @sotaikhoan WHERE ma = @ma;";
+            string update = "UPDATE khachhang SET ten = @ten,daidien=@daidien, chucvu=@chucvu , diachi = @diachi, dienthoai = @dienthoai, masothue = @masothue, taikhoannganhang = @taikhoannganhang, sotaikhoan = @sotaikhoan WHERE ma = @ma;";
             using (var command = new SQLiteCommand(update, connection))
             {
                 command.Parameters.AddWithValue("@ma", ma);
                 command.Parameters.AddWithValue("@ten", ten);
+                command.Parameters.AddWithValue("@daidien", daidien);
+                command.Parameters.AddWithValue("@chucvu", chucvu);
                 command.Parameters.AddWithValue("@diachi", diachi);
                 command.Parameters.AddWithValue("@dienthoai", dienthoai);
                 command.Parameters.AddWithValue("@masothue", masothue);

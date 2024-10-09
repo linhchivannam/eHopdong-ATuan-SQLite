@@ -204,6 +204,7 @@
     <None Include="Properties\DataSources\eMekong.MODEL.BCDoanhthuloinhuan.datasource" />
     <None Include="Properties\DataSources\eMekong.MODEL.Chamsoc.datasource" />
     <None Include="Properties\DataSources\PQDb.MODEL.Hopdong.datasource" />
+    <None Include="Properties\DataSources\PQDb.MODEL.Khachhang.datasource" />
     <None Include="Properties\DataSources\PQDb.MODEL.Nguoidung.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

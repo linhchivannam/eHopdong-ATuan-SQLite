@@ -45,6 +45,8 @@ namespace eHopdong.USERCONTROL.DLG
                     txtKHSoTK.Text = q.Sotaikhoan;
                     txtKHMST.Text = q.Masothue;
                     txtKHNH.Text = q.Taikhoannganhang;
+                    txtKHDaidien.Text = q.Daidien;
+                    txtKHChucvu.Text = q.Chucvu;
                 }
             }
         }
@@ -227,7 +229,21 @@ namespace eHopdong.USERCONTROL.DLG
                     f.ShowDialog();
                     if (PQ.ClickOK)
                     {
-                        var q = db.Get1Khachhang();
+                        var q = db.Get1Khachhang(PQ.tamma);
+                        if (q != null)
+                        {
+                            txtKHma.Text = q.Ma;
+                            txtKHten.Text = q.Ten;
+
+                            txtKHDaidien.Text = q.Daidien;
+                            txtKHChucvu.Text = q.Chucvu;
+                            txtKHDiachi.Text = q.Diachi;
+                            txtKhDienthoai.Text = q.Dienthoai;
+                            txtKHMST.Text = q.Masothue;
+                            txtKHSoTK.Text = q.Sotaikhoan;
+                            txtKHNH.Text = q.Taikhoannganhang;
+                            
+                        }
                     }
                 }
             }
